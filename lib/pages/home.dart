@@ -26,11 +26,14 @@ import 'package:gallery/studies/shrine/colors.dart';
 import 'package:gallery/studies/shrine/routes.dart' as shrine_routes;
 import 'package:gallery/studies/starter/routes.dart' as starter_app_routes;
 
+import '../dio.dart';
+
 const _horizontalPadding = 32.0;
 const _carouselItemMargin = 8.0;
 const _horizontalDesktopPadding = 81.0;
 const _carouselHeightMin = 200.0 + 2 * _carouselItemMargin;
 const _desktopCardsPerPage = 4;
+
 
 class ToggleSplashNotification extends Notification {}
 
@@ -39,6 +42,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DioClient.defaultClient.get<String>("https://www.qomg.fun").then((value) => debugPrint(value.data));
     var carouselHeight = _carouselHeight(.7, context);
     final isDesktop = isDisplayDesktop(context);
     final localizations = GalleryLocalizations.of(context);

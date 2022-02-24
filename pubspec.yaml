@@ -4,8 +4,10 @@ repository: https://github.com/flutter/gallery
 version: 2.9.3+020903
 
 environment:
-  flutter: ^2.2.0
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.10.0-0"
+
+#publish_to: none
 
 dependencies:
   flutter:
@@ -37,6 +39,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   args: ^2.1.0
+  #build_runner: ^2.1.1
   flutter_lints: ^1.0.2
   grinder: ^0.9.0
   path: ^1.8.0
@@ -44,6 +47,11 @@ dev_dependencies:
   string_scanner: ^1.1.0
   test: ^1.16.8
   web_benchmarks: ^0.0.5
+  # dokit
+  dokit:
+    git:
+      url: http://gitlab.yeahka.com/App/Flutter/dokit.git
+      ref: master
   # ume
   flutter_ume: ^0.2.1
   flutter_ume_kit_ui: ^0.2.1
@@ -53,7 +61,10 @@ dev_dependencies:
   flutter_ume_kit_console: ^0.2.1
   flutter_ume_kit_dio: ^0.2.0  # 仅支持 null-safety 版本
   flutter_ume_kit_analysis:
-    path: /Users/suhao/codelabs/github.com/flutter_ume/kits/flutter_ume_kit_analysis
+    #path: /Users/suhao/Yeahka/Flutter/flutter_ume_kit_analysis
+    git:
+      url: http://gitlab.yeahka.com/App/Flutter/flutter_ume_kit_analysis.git
+      ref: master
 
 
 flutter:

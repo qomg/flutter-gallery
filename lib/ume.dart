@@ -25,7 +25,7 @@ Widget wrapUME(Widget app) {
       ..register(CpuInfoPage()) // CPU信息
       ..register(const DeviceInfoPanel()) // 设备信息
       ..register(Console()) // 日志
-      ..register(AnalysisRobot()) // 分析机器人
+      ..register(Analysis()) // 分析机器人
       ..register(DioInspector(dio: DioClient.defaultClient)); // Dio网络调试工具，传入Dio实例
     return injectUMEWidget(child: app, enable: true); // 初始化
   }
