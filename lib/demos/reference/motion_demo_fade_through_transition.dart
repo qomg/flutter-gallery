@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 // BEGIN fadeThroughTransitionDemo
 
 class FadeThroughTransitionDemo extends StatefulWidget {
-  const FadeThroughTransitionDemo({Key key}) : super(key: key);
+  const FadeThroughTransitionDemo({Key? key}) : super(key: key);
 
   @override
   _FadeThroughTransitionDemoState createState() =>
@@ -27,7 +27,7 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +39,7 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
               '(${localizations.demoFadeThroughDemoInstructions})',
               style: Theme.of(context)
                   .textTheme
-                  .subtitle2
+                  .subtitle2!
                   .copyWith(color: Colors.white),
             ),
           ],
@@ -88,7 +88,7 @@ class _FadeThroughTransitionDemoState extends State<FadeThroughTransitionDemo> {
 class _ExampleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
 
     return Expanded(
@@ -178,7 +178,7 @@ class _PhotosPage extends StatelessWidget {
 class _SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
 
     return ListView.builder(
       itemBuilder: (context, index) {

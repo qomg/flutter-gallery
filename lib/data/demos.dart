@@ -48,7 +48,7 @@ enum GalleryDemoCategory {
 extension GalleryDemoExtension on GalleryDemoCategory {
   String get name => describeEnum(this);
 
-  String displayTitle(GalleryLocalizations localizations) {
+  String? displayTitle(GalleryLocalizations localizations) {
     switch (this) {
       case GalleryDemoCategory.material:
         return 'MATERIAL';
@@ -64,45 +64,42 @@ extension GalleryDemoExtension on GalleryDemoCategory {
 
 class GalleryDemo {
   const GalleryDemo({
-    @required this.title,
-    @required this.category,
-    @required this.subtitle,
+    required this.title,
+    required this.category,
+    required this.subtitle,
     // This parameter is required for studies.
     this.studyId,
     // Parameters below are required for non-study demos.
     this.slug,
     this.icon,
     this.configurations,
-  })  : assert(title != null),
-        assert(category != null),
-        assert(subtitle != null),
-        assert(category == GalleryDemoCategory.study ||
+  })  : assert(category == GalleryDemoCategory.study ||
             (slug != null && icon != null && configurations != null)),
         assert(slug != null || studyId != null);
 
   final String title;
   final GalleryDemoCategory category;
   final String subtitle;
-  final String studyId;
-  final String slug;
-  final IconData icon;
-  final List<GalleryDemoConfiguration> configurations;
+  final String? studyId;
+  final String? slug;
+  final IconData? icon;
+  final List<GalleryDemoConfiguration>? configurations;
 
   String get describe => '${slug ?? studyId}@${category.name}';
 }
 
 class GalleryDemoConfiguration {
   const GalleryDemoConfiguration({
-    this.title,
-    this.description,
-    this.documentationUrl,
-    this.buildRoute,
-    this.code,
+    required this.title,
+    required this.description,
+    required this.documentationUrl,
+    required this.buildRoute,
+    required this.code,
   });
 
   final String title;
   final String description;
-  final String documentationUrl;
+  final String? documentationUrl;
   final WidgetBuilder buildRoute;
   final CodeDisplayer code;
 }
@@ -1361,7 +1358,7 @@ List<GalleryDemo> otherDemos(GalleryLocalizations localizations) {
 }
 
 Map<String, GalleryDemo> slugToDemo(BuildContext context) {
-  final localizations = GalleryLocalizations.of(context);
+  final localizations = GalleryLocalizations.of(context)!;
   return LinkedHashMap<String, GalleryDemo>.fromIterable(
     allGalleryDemos(localizations),
     key: (dynamic demo) => demo.slug as String,
@@ -1371,12 +1368,12 @@ Map<String, GalleryDemo> slugToDemo(BuildContext context) {
 /// Awaits all deferred libraries for tests.
 Future<void> pumpDeferredLibraries() {
   final futures = <Future<void>>[
-    DeferredWidget.preload(cupertino_demos.loadLibrary),
-    DeferredWidget.preload(material_demos.loadLibrary),
-    DeferredWidget.preload(motion_demo_container.loadLibrary),
-    DeferredWidget.preload(colors_demo.loadLibrary),
-    DeferredWidget.preload(transformations_demo.loadLibrary),
-    DeferredWidget.preload(typography.loadLibrary),
+    DeferredWidget.preload(cupertino_demos.loadLibrary)!,
+    DeferredWidget.preload(material_demos.loadLibrary)!,
+    DeferredWidget.preload(motion_demo_container.loadLibrary)!,
+    DeferredWidget.preload(colors_demo.loadLibrary)!,
+    DeferredWidget.preload(transformations_demo.loadLibrary)!,
+    DeferredWidget.preload(typography.loadLibrary)!,
   ];
   return Future.wait(futures);
 }

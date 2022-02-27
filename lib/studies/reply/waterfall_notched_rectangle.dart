@@ -25,7 +25,7 @@ class WaterfallNotchedRectangle extends NotchedShape {
   /// The notch is curve that smoothly connects the host's top edge and
   /// the guest circle.
   @override
-  Path getOuterPath(Rect host, Rect guest) {
+  Path getOuterPath(Rect host, Rect? guest) {
     if (guest == null || !host.overlaps(guest)) return Path()..addRect(host);
 
     // The guest's shape is a circle bounded by the guest rectangle.
@@ -54,7 +54,7 @@ class WaterfallNotchedRectangle extends NotchedShape {
     final p2yA = math.sqrt(r * r - p2xA * p2xA);
     final p2yB = math.sqrt(r * r - p2xB * p2xB);
 
-    final p = List<Offset>.filled(6, null, growable: false);
+    final p = List<Offset>.filled(6, Offset.zero, growable: false);
 
     // p0, p1, and p2 are the control points for segment A.
     p[0] = Offset(a - s1, b);

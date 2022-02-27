@@ -13,7 +13,7 @@ import 'package:gallery/studies/crane/sleep_form.dart';
 import 'package:gallery/studies/crane/theme.dart';
 
 class CraneApp extends StatelessWidget {
-  const CraneApp({Key key}) : super(key: key);
+  const CraneApp({Key? key}) : super(key: key);
 
   static const String defaultRoute = routes.defaultRoute;
 
@@ -25,13 +25,13 @@ class CraneApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: GalleryLocalizations.localizationsDelegates,
       supportedLocales: GalleryLocalizations.supportedLocales,
-      locale: GalleryOptions.of(context).locale,
+      locale: GalleryOptions.of(context)!.locale,
       initialRoute: CraneApp.defaultRoute,
       routes: {
         CraneApp.defaultRoute: (context) => const _Home(),
       },
       theme: craneTheme.copyWith(
-        platform: GalleryOptions.of(context).platform,
+        platform: GalleryOptions.of(context)!.platform,
       ),
     );
   }

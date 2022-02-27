@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 
 class Category {
   const Category({
-    @required this.name,
+    required this.name,
   }) : assert(name != null);
 
   // A function taking a BuildContext as input and
@@ -17,21 +17,21 @@ class Category {
 }
 
 Category categoryAll = Category(
-  name: (context) => GalleryLocalizations.of(context).shrineCategoryNameAll,
+  name: (context) => GalleryLocalizations.of(context)!.shrineCategoryNameAll,
 );
 
 Category categoryAccessories = Category(
   name: (context) =>
-      GalleryLocalizations.of(context).shrineCategoryNameAccessories,
+      GalleryLocalizations.of(context)!.shrineCategoryNameAccessories,
 );
 
 Category categoryClothing = Category(
   name: (context) =>
-      GalleryLocalizations.of(context).shrineCategoryNameClothing,
+      GalleryLocalizations.of(context)!.shrineCategoryNameClothing,
 );
 
 Category categoryHome = Category(
-  name: (context) => GalleryLocalizations.of(context).shrineCategoryNameHome,
+  name: (context) => GalleryLocalizations.of(context)!.shrineCategoryNameHome,
 );
 
 List<Category> categories = [
@@ -43,11 +43,11 @@ List<Category> categories = [
 
 class Product {
   const Product({
-    @required this.category,
-    @required this.id,
-    @required this.isFeatured,
-    @required this.name,
-    @required this.price,
+    required this.category,
+    required this.id,
+    required this.isFeatured,
+    required this.name,
+    required this.price,
     this.assetAspectRatio = 1,
   })  : assert(category != null),
         assert(id != null),

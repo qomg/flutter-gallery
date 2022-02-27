@@ -1,13 +1,13 @@
 class Email {
   Email({
-    this.id,
-    this.sender,
-    this.time,
-    this.subject,
-    this.message,
-    this.avatar,
-    this.recipients,
-    this.containsPictures,
+    required this.id,
+    required this.sender,
+    required this.time,
+    required this.subject,
+    required this.message,
+    required this.avatar,
+    required this.recipients,
+    required this.containsPictures,
   });
 
   final int id;
@@ -22,14 +22,14 @@ class Email {
 
 class InboxEmail extends Email {
   InboxEmail({
-    int id,
-    String sender,
-    String time,
-    String subject,
-    String message,
-    String avatar,
-    String recipients,
-    bool containsPictures,
+    required int id,
+    required String sender,
+    required String time,
+    required String subject,
+    required String message,
+    required String avatar,
+    required String recipients,
+    required bool containsPictures,
     this.inboxType = InboxType.normal,
   }) : super(
           id: id,

@@ -9,9 +9,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void showAboutDialog({
-  @required BuildContext context,
+  required BuildContext context,
 }) {
-  assert(context != null);
   showDialog<void>(
     context: context,
     builder: (context) {
@@ -31,13 +30,13 @@ class _AboutDialog extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     final bodyTextStyle =
-        textTheme.bodyText1.apply(color: colorScheme.onPrimary);
+        textTheme.bodyText1!.apply(color: colorScheme.onPrimary);
 
     const name = 'Flutter Gallery'; // Don't need to localize.
     const legalese = '© 2021 The Flutter team'; // Don't need to localize.
-    final repoText = GalleryLocalizations.of(context).githubRepo(name);
+    final repoText = GalleryLocalizations.of(context)!.githubRepo(name);
     final seeSource =
-        GalleryLocalizations.of(context).aboutDialogDescription(repoText);
+        GalleryLocalizations.of(context)!.aboutDialogDescription(repoText);
     final repoLinkIndex = seeSource.indexOf(repoText);
     final repoLinkIndexEnd = repoLinkIndex + repoText.length;
     final seeSourceFirst = seeSource.substring(0, repoLinkIndex);
@@ -56,7 +55,7 @@ class _AboutDialog extends StatelessWidget {
               future: getVersionNumber(),
               builder: (context, snapshot) => SelectableText(
                 snapshot.hasData ? '$name ${snapshot.data}' : name,
-                style: textTheme.headline4.apply(color: colorScheme.onPrimary),
+                style: textTheme.headline4!.apply(color: colorScheme.onPrimary),
               ),
             ),
             const SizedBox(height: 24),

@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 /// Get the locale string for the context.
 String locale(BuildContext context) =>
-    GalleryOptions.of(context).locale.toString();
+    GalleryOptions.of(context)!.locale.toString();
 
 /// Currency formatter for USD.
 NumberFormat usdWithSignFormat(BuildContext context, {int decimalDigits = 2}) {

@@ -13,16 +13,14 @@ const _iconAssetLocation = 'reply/icons';
 
 class MailPreviewCard extends StatelessWidget {
   const MailPreviewCard({
-    Key key,
-    @required this.id,
-    @required this.email,
-    @required this.onDelete,
-    @required this.onStar,
-    @required this.isStarred,
-    @required this.onStarredMailbox,
-  })  : assert(id != null),
-        assert(email != null),
-        super(key: key);
+    Key? key,
+    required this.id,
+    required this.email,
+    required this.onDelete,
+    required this.onStar,
+    required this.isStarred,
+    required this.onStarredMailbox,
+  })  : super(key: key);
 
   final int id;
   final Email email;
@@ -120,16 +118,12 @@ class MailPreviewCard extends StatelessWidget {
 
 class _DismissibleContainer extends StatelessWidget {
   const _DismissibleContainer({
-    @required this.icon,
-    @required this.backgroundColor,
-    @required this.iconColor,
-    @required this.alignment,
-    @required this.padding,
-  })  : assert(icon != null),
-        assert(backgroundColor != null),
-        assert(iconColor != null),
-        assert(alignment != null),
-        assert(padding != null);
+    required this.icon,
+    required this.backgroundColor,
+    required this.iconColor,
+    required this.alignment,
+    required this.padding,
+  })  : assert(backgroundColor != null);
 
   final String icon;
   final Color backgroundColor;
@@ -162,14 +156,12 @@ class _DismissibleContainer extends StatelessWidget {
 
 class _MailPreview extends StatelessWidget {
   const _MailPreview({
-    @required this.id,
-    @required this.email,
-    @required this.onTap,
-    this.onStar,
-    this.onDelete,
-  })  : assert(id != null),
-        assert(email != null),
-        assert(onTap != null);
+    required this.id,
+    required this.email,
+    required this.onTap,
+    required this.onStar,
+    required this.onDelete,
+  });
 
   final int id;
   final Email email;
@@ -289,11 +281,11 @@ class _PicturePreview extends StatelessWidget {
 
 class _MailPreviewActionBar extends StatelessWidget {
   const _MailPreviewActionBar({
-    @required this.avatar,
-    this.isStarred,
-    this.onStar,
-    this.onDelete,
-  }) : assert(avatar != null);
+    required this.avatar,
+    required this.isStarred,
+    required this.onStar,
+    required this.onDelete,
+  });
 
   final String avatar;
   final bool isStarred;

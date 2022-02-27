@@ -101,12 +101,16 @@ class RouteConfiguration {
   /// route. Set it on the [MaterialApp.onGenerateRoute] or
   /// [WidgetsApp.onGenerateRoute] to make use of the [paths] for route
   /// matching.
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    var name = settings.name;
+    if (name == null) return null;
     for (final path in paths) {
       final regExpPattern = RegExp(path.pattern);
-      if (regExpPattern.hasMatch(settings.name)) {
-        final firstMatch = regExpPattern.firstMatch(settings.name);
+      if (regExpPattern.hasMatch(name)) {
+        final firstMatch = regExpPattern.firstMatch(name);
+        if (firstMatch == null) continue;
         final match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
+        if (match == null) continue;
         if (kIsWeb) {
           return NoAnimationMaterialPageRoute<void>(
             builder: (context) => path.builder(context, match),
@@ -127,8 +131,8 @@ class RouteConfiguration {
 
 class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
   NoAnimationMaterialPageRoute({
-    @required WidgetBuilder builder,
-    RouteSettings settings,
+    required WidgetBuilder builder,
+    RouteSettings? settings,
   }) : super(builder: builder, settings: settings);
 
   @override

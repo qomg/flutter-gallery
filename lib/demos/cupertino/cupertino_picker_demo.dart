@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 // BEGIN cupertinoPickersDemo
 
 class CupertinoPickerDemo extends StatefulWidget {
-  const CupertinoPickerDemo({Key key}) : super(key: key);
+  const CupertinoPickerDemo({Key? key}) : super(key: key);
 
   @override
   _CupertinoPickerDemoState createState() => _CupertinoPickerDemoState();
@@ -28,8 +28,8 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
   DateTime dateTime = DateTime.now();
 
   void _showDemoPicker({
-    @required BuildContext context,
-    @required Widget child,
+    required BuildContext context,
+    required Widget child,
   }) {
     final themeData = CupertinoTheme.of(context);
     final dialogBody = CupertinoTheme(
@@ -64,7 +64,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
           );
         },
         child: _Menu(children: [
-          Text(GalleryLocalizations.of(context).demoCupertinoPickerDate),
+          Text(GalleryLocalizations.of(context)!.demoCupertinoPickerDate),
           Text(
             DateFormat.yMMMMd().format(date),
             style: const TextStyle(color: CupertinoColors.inactiveGray),
@@ -96,7 +96,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         },
         child: _Menu(
           children: [
-            Text(GalleryLocalizations.of(context).demoCupertinoPickerTime),
+            Text(GalleryLocalizations.of(context)!.demoCupertinoPickerTime),
             Text(
               DateFormat.jm().format(time),
               style: const TextStyle(color: CupertinoColors.inactiveGray),
@@ -129,7 +129,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         },
         child: _Menu(
           children: [
-            Text(GalleryLocalizations.of(context).demoCupertinoPickerDateTime),
+            Text(GalleryLocalizations.of(context)!.demoCupertinoPickerDateTime),
             Flexible(
               child: Text(
                 DateFormat.yMMMd().add_jm().format(dateTime),
@@ -163,7 +163,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
         },
         child: _Menu(
           children: [
-            Text(GalleryLocalizations.of(context).demoCupertinoPickerTimer),
+            Text(GalleryLocalizations.of(context)!.demoCupertinoPickerTimer),
             Text(
               '${timer.inHours}:'
               '${(timer.inMinutes % 60).toString().padLeft(2, '0')}:'
@@ -181,7 +181,7 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         automaticallyImplyLeading: false,
-        middle: Text(GalleryLocalizations.of(context).demoCupertinoPickerTitle),
+        middle: Text(GalleryLocalizations.of(context)!.demoCupertinoPickerTitle),
       ),
       child: DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
@@ -201,8 +201,8 @@ class _CupertinoPickerDemoState extends State<CupertinoPickerDemo> {
 
 class _BottomPicker extends StatelessWidget {
   const _BottomPicker({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   })  : assert(child != null),
         super(key: key);
 
@@ -237,8 +237,8 @@ class _BottomPicker extends StatelessWidget {
 
 class _Menu extends StatelessWidget {
   const _Menu({
-    Key key,
-    @required this.children,
+    Key? key,
+    required this.children,
   })  : assert(children != null),
         super(key: key);
 

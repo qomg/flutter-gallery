@@ -10,7 +10,7 @@ import 'package:gallery/codeviewer/code_style.dart';
 
 class CodeSegments {
   static TextSpan appbarDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -325,7 +325,7 @@ class CodeSegments {
   }
 
   static TextSpan bannerDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -1122,7 +1122,7 @@ class CodeSegments {
   }
 
   static TextSpan bottomAppBarDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -2108,7 +2108,7 @@ class CodeSegments {
   }
 
   static TextSpan bottomNavigationDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -2171,14 +2171,14 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'restorationId'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -3042,7 +3042,7 @@ class CodeSegments {
   }
 
   static TextSpan bottomSheetDemoModal(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -3346,7 +3346,7 @@ class CodeSegments {
   }
 
   static TextSpan bottomSheetDemoPersistent(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -3751,7 +3751,7 @@ class CodeSegments {
   }
 
   static TextSpan buttonDemoElevated(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -3920,7 +3920,7 @@ class CodeSegments {
   }
 
   static TextSpan buttonDemoFloating(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -4093,7 +4093,7 @@ class CodeSegments {
   }
 
   static TextSpan buttonDemoOutlined(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -4262,7 +4262,7 @@ class CodeSegments {
   }
 
   static TextSpan buttonDemoText(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -4431,7 +4431,7 @@ class CodeSegments {
   }
 
   static TextSpan buttonDemoToggle(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -4731,7 +4731,7 @@ class CodeSegments {
   }
 
   static TextSpan cardsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -4785,42 +4785,42 @@ class CodeSegments {
       TextSpan(style: codeStyle.classStyle, text: 'TravelDestination'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'assetName'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'assetPackage'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'title'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'description'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'city'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -5194,7 +5194,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -5391,7 +5391,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -5641,21 +5641,21 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'destination'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'isSelected'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -6180,7 +6180,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -7101,7 +7101,7 @@ class CodeSegments {
   }
 
   static TextSpan chipDemoAction(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -7221,7 +7221,7 @@ class CodeSegments {
   }
 
   static TextSpan chipDemoChoice(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -7607,7 +7607,7 @@ class CodeSegments {
   }
 
   static TextSpan chipDemoFilter(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -8034,7 +8034,7 @@ class CodeSegments {
   }
 
   static TextSpan chipDemoInput(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -8173,7 +8173,7 @@ class CodeSegments {
   }
 
   static TextSpan colorsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -8222,14 +8222,14 @@ class CodeSegments {
       TextSpan(style: codeStyle.classStyle, text: '_Palette'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'name'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -8981,14 +8981,14 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'index'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -9192,7 +9192,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -9651,7 +9651,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoActivityIndicatorDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -9781,7 +9781,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoAlertDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -9843,7 +9843,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -11905,7 +11905,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoButtonDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -12112,7 +12112,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoContextMenuDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -12452,7 +12452,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoNavigationBarDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -12976,7 +12976,7 @@ class CodeSegments {
           style: codeStyle.classStyle, text: '_NoAnimationCupertinoPageRoute'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'WidgetBuilder'),
       TextSpan(style: codeStyle.baseStyle, text: ' builder'),
@@ -13055,7 +13055,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoNavigationDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -13386,14 +13386,14 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'title'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -13489,7 +13489,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoPickersDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -13631,13 +13631,13 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' _showDemoPicker'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'BuildContext'),
       TextSpan(style: codeStyle.baseStyle, text: ' context'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'Widget'),
       TextSpan(style: codeStyle.baseStyle, text: ' child'),
@@ -14492,7 +14492,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -14681,7 +14681,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -14838,7 +14838,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoRefreshDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -15228,7 +15228,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoSegmentedControlDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -15704,7 +15704,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoSliderDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -16231,7 +16231,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoSwitchDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -16492,7 +16492,7 @@ class CodeSegments {
   }
 
   static TextSpan cupertinoTextFieldDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -16924,7 +16924,7 @@ class CodeSegments {
   }
 
   static TextSpan customSlidersDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -17393,7 +17393,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.punctuationStyle, text: '{'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'Animation'),
       TextSpan(style: codeStyle.punctuationStyle, text: '<'),
@@ -17402,7 +17402,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' activationAnimation'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'Animation'),
       TextSpan(style: codeStyle.punctuationStyle, text: '<'),
@@ -17433,7 +17433,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' textDirection'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'SliderThemeData'),
       TextSpan(style: codeStyle.baseStyle, text: ' sliderTheme'),
@@ -18984,7 +18984,7 @@ class CodeSegments {
   }
 
   static TextSpan dataTableDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -22187,7 +22187,7 @@ class CodeSegments {
   }
 
   static TextSpan dialogDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -22249,7 +22249,7 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -23453,7 +23453,7 @@ class CodeSegments {
           style: codeStyle.classStyle, text: '_NoAnimationMaterialPageRoute'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.classStyle, text: 'WidgetBuilder'),
       TextSpan(style: codeStyle.baseStyle, text: ' builder'),
@@ -24004,7 +24004,7 @@ class CodeSegments {
   }
 
   static TextSpan dividerDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -24211,7 +24211,7 @@ class CodeSegments {
   }
 
   static TextSpan fadeScaleTransitionDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -25031,7 +25031,7 @@ class CodeSegments {
   }
 
   static TextSpan fadeThroughTransitionDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -25954,7 +25954,7 @@ class CodeSegments {
   }
 
   static TextSpan gridListsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -26728,14 +26728,14 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'photo'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -27061,7 +27061,7 @@ class CodeSegments {
   }
 
   static TextSpan listDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -27320,7 +27320,7 @@ class CodeSegments {
   }
 
   static TextSpan menuDemoChecklist(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -28237,7 +28237,7 @@ class CodeSegments {
   }
 
   static TextSpan menuDemoContext(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -28529,7 +28529,7 @@ class CodeSegments {
   }
 
   static TextSpan menuDemoSectioned(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -28931,7 +28931,7 @@ class CodeSegments {
   }
 
   static TextSpan menuDemoSimple(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -29379,7 +29379,7 @@ class CodeSegments {
   }
 
   static TextSpan navDrawerDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -29707,7 +29707,7 @@ class CodeSegments {
   }
 
   static TextSpan navRailDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -30229,7 +30229,7 @@ class CodeSegments {
   }
 
   static TextSpan openContainerTransformDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -33116,7 +33116,7 @@ class CodeSegments {
   }
 
   static TextSpan pickerDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -34384,7 +34384,7 @@ class CodeSegments {
   }
 
   static TextSpan progressIndicatorsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -34943,7 +34943,7 @@ class CodeSegments {
   }
 
   static TextSpan rangeSlidersDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -35494,7 +35494,7 @@ class CodeSegments {
   }
 
   static TextSpan selectionControlsDemoCheckbox(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -35836,7 +35836,7 @@ class CodeSegments {
   }
 
   static TextSpan selectionControlsDemoRadio(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -36090,7 +36090,7 @@ class CodeSegments {
   }
 
   static TextSpan selectionControlsDemoSwitches(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -36317,7 +36317,7 @@ class CodeSegments {
   }
 
   static TextSpan sharedXAxisTransitionDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -37593,7 +37593,7 @@ class CodeSegments {
   }
 
   static TextSpan sharedYAxisTransitionDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(style: codeStyle.keywordStyle, text: 'import'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
@@ -38577,7 +38577,7 @@ class CodeSegments {
   }
 
   static TextSpan sharedZAxisTransitionDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(style: codeStyle.keywordStyle, text: 'import'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
@@ -39820,7 +39820,7 @@ class CodeSegments {
   }
 
   static TextSpan slidersDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -40405,7 +40405,7 @@ class CodeSegments {
   }
 
   static TextSpan snackbarsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -40652,7 +40652,7 @@ class CodeSegments {
   }
 
   static TextSpan tabsNonScrollableDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -41056,7 +41056,7 @@ class CodeSegments {
   }
 
   static TextSpan tabsScrollableDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -41535,7 +41535,7 @@ class CodeSegments {
   }
 
   static TextSpan textFieldDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -43942,7 +43942,7 @@ class CodeSegments {
   }
 
   static TextSpan tooltipDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -44188,7 +44188,7 @@ class CodeSegments {
   }
 
   static TextSpan transformationsDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -45499,21 +45499,21 @@ class CodeSegments {
       TextSpan(style: codeStyle.classStyle, text: 'Board'),
       TextSpan(style: codeStyle.punctuationStyle, text: '({'),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'boardRadius'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'hexagonRadius'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -47302,7 +47302,7 @@ class CodeSegments {
   }
 
   static TextSpan typographyDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,
@@ -47350,21 +47350,21 @@ class CodeSegments {
       TextSpan(style: codeStyle.baseStyle, text: ' key'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'name'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
       TextSpan(style: codeStyle.baseStyle, text: 'style'),
       TextSpan(style: codeStyle.punctuationStyle, text: ','),
       TextSpan(style: codeStyle.baseStyle, text: '\u000a    '),
-      TextSpan(style: codeStyle.keywordStyle, text: '@required'),
+      TextSpan(style: codeStyle.keywordStyle, text: 'required'),
       TextSpan(style: codeStyle.baseStyle, text: ' '),
       TextSpan(style: codeStyle.keywordStyle, text: 'this'),
       TextSpan(style: codeStyle.punctuationStyle, text: '.'),
@@ -47924,7 +47924,7 @@ class CodeSegments {
   }
 
   static TextSpan verticalDividerDemo(BuildContext context) {
-    final codeStyle = CodeStyle.of(context);
+    final codeStyle = CodeStyle.of(context)!;
     return TextSpan(children: [
       TextSpan(
           style: codeStyle.commentStyle,

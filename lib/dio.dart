@@ -12,3 +12,7 @@ class DioClient {
     return Dio(options);
   }
 }
+
+void foo() {
+  DioClient.defaultClient.get<String>('https://www.qomg.fun').then((value) => print(value.data)).catchError(print);
+}

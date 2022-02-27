@@ -39,17 +39,17 @@ DemoType typeOfDemo(String demo) {
 /// A class that automates the gallery.
 class GalleryAutomator {
   GalleryAutomator({
-    @required this.benchmarkName,
+    required this.benchmarkName,
     this.shouldRunPredicate,
     this.testScrollsOnly = false,
-    @required this.stopWarmingUpCallback,
+    required this.stopWarmingUpCallback,
   }) : assert(testScrollsOnly || shouldRunPredicate != null);
 
   /// The name of the current benchmark.
   final String benchmarkName;
 
   /// A function deciding whether a demo should be run in this benchmark.
-  final bool Function(String) shouldRunPredicate;
+  final bool Function(String)? shouldRunPredicate;
 
   /// Whether we only test scrolling in this benchmark.
   final bool testScrollsOnly;
@@ -64,7 +64,7 @@ class GalleryAutomator {
   bool finished = false;
 
   /// A widget controller for automation.
-  LiveWidgetController controller;
+  late LiveWidgetController controller;
 
   /// An iterable that generates all demo names.
   Iterable<String> get demoNames => allGalleryDemoDescriptions();
@@ -86,7 +86,7 @@ class GalleryAutomator {
 
     stdout.writeln('==== List of demos to be run ====');
     for (final demo in demoNames) {
-      if (shouldRunPredicate(demo)) {
+      if (shouldRunPredicate?.call(demo) == true) {
         stdout.writeln(demo);
       }
     }
@@ -117,7 +117,7 @@ class GalleryAutomator {
       // Note that the above scrolling is required even for demos *not*
       // satisfying `runCriterion`, because we need to scroll
       // through every `Scrollable` to find the `demoButton`.
-      if (shouldRunPredicate(demo)) {
+      if (shouldRunPredicate?.call(demo) == true) {
         stdout.writeln('Running demo "$demo"');
 
         for (var i = 0; i < 2; ++i) {
@@ -165,7 +165,7 @@ class GalleryAutomator {
         scrolled = false;
         final pageScrollable =
             Scrollable.of(find.text('Categories').evaluate().single);
-        await scrollToExtreme(scrollable: pageScrollable, toEnd: false);
+        await scrollToExtreme(scrollable: pageScrollable!, toEnd: false);
       }
 
       // Scroll that scrollable
@@ -174,7 +174,7 @@ class GalleryAutomator {
       final scrollable = Scrollable.of(demoButton);
 
       for (var i = 0; i < 2; ++i) {
-        await scrollToExtreme(scrollable: scrollable, toEnd: true);
+        await scrollToExtreme(scrollable: scrollable!, toEnd: true);
         await scrollToExtreme(scrollable: scrollable, toEnd: false);
       }
     }
@@ -193,7 +193,7 @@ class GalleryAutomator {
     await animationStops();
 
     // Set controller.
-    controller = LiveWidgetController(WidgetsBinding.instance);
+    controller = LiveWidgetController(WidgetsBinding.instance!);
 
     // Find first demo of each category.
     final candidateDemos = firstDemosOfCategories(demoNames);
@@ -201,20 +201,19 @@ class GalleryAutomator {
     // Find first demo that is not being tested here.
     // We open this demo as a way to warm up the engine, so we need to use an
     // untested demo to avoid biasing the benchmarks.
-    String firstUntestedDemo;
+    String? firstUntestedDemo;
     for (final demo in candidateDemos) {
-      if (testScrollsOnly || !shouldRunPredicate(demo)) {
+      if (testScrollsOnly || shouldRunPredicate?.call(demo) != true) {
         firstUntestedDemo = demo;
         break;
       }
     }
-    assert(firstUntestedDemo != null);
 
     // Open and close the demo twice to warm up.
     for (var i = 0; i < 2; ++i) {
       await controller.tap(find.byKey(ValueKey(firstUntestedDemo)));
 
-      if (typeOfDemo(firstUntestedDemo) == DemoType.animatedWidget) {
+      if (typeOfDemo(firstUntestedDemo!) == DemoType.animatedWidget) {
         await Future<void>.delayed(_defaultWaitingDuration);
       } else {
         await animationStops();

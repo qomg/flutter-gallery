@@ -129,12 +129,12 @@ Future<bool> isPresent(SerializableFinder finder, FlutterDriver driver,
 Future<void> runDemos(
   List<String> demos,
   FlutterDriver driver, {
-  Future<void> Function() additionalActions,
+  Future<void> Function()? additionalActions,
   bool scrollToTopWhenDone = true,
 }) async {
-  String currentDemoCategory;
-  SerializableFinder demoList;
-  SerializableFinder demoItem;
+  String? currentDemoCategory;
+  SerializableFinder? demoList;
+  SerializableFinder? demoItem;
 
   for (final demo in demos) {
     if (_skippedDemos.contains(demo)) continue;
@@ -168,7 +168,7 @@ Future<void> runDemos(
 
     stdout.writeln('scrolling to demo');
     await driver.scrollUntilVisible(
-      demoList,
+      demoList!,
       demoItem,
       dxScroll: -500,
       dyScroll: -50,
@@ -197,15 +197,15 @@ Future<void> runDemos(
     stdout.writeln('< Success');
   }
 
-  if (scrollToTopWhenDone) await scrollToTop(demoItem, driver);
+  if (scrollToTopWhenDone) await scrollToTop(demoItem!, driver);
 }
 
 void main([List<String> args = const <String>[]]) {
   group('Flutter Gallery transitions', () {
-    FlutterDriver driver;
+    late FlutterDriver driver;
 
-    bool isTestingCraneOnly;
-    bool isTestingReplyOnly;
+    late bool isTestingCraneOnly;
+    late bool isTestingReplyOnly;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
@@ -233,9 +233,7 @@ void main([List<String> args = const <String>[]]) {
     });
 
     tearDownAll(() async {
-      if (driver != null) {
-        await driver.close();
-      }
+      await driver.close();
 
       stdout.writeln(
           'Timeline summaries for profiled demos have been output to the build/ directory.');

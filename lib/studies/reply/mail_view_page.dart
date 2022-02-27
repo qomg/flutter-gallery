@@ -5,10 +5,11 @@ import 'package:gallery/studies/reply/profile_avatar.dart';
 import 'package:provider/provider.dart';
 
 class MailViewPage extends StatelessWidget {
-  const MailViewPage({Key key, @required this.id, @required this.email})
-      : assert(id != null),
-        assert(email != null),
-        super(key: key);
+  const MailViewPage({
+    Key? key,
+    required this.id,
+    required this.email,
+  }) : super(key: key);
 
   final int id;
   final Email email;
@@ -51,8 +52,8 @@ class MailViewPage extends StatelessWidget {
 
 class _MailViewHeader extends StatelessWidget {
   const _MailViewHeader({
-    @required this.email,
-  }) : assert(email != null);
+    required this.email,
+  });
 
   final Email email;
 
@@ -68,7 +69,7 @@ class _MailViewHeader extends StatelessWidget {
             Expanded(
               child: SelectableText(
                 email.subject,
-                style: textTheme.headline4.copyWith(height: 1.1),
+                style: textTheme.headline4!.copyWith(height: 1.1),
               ),
             ),
             IconButton(
@@ -98,10 +99,10 @@ class _MailViewHeader extends StatelessWidget {
                 const SizedBox(height: 4),
                 SelectableText(
                   'To ${email.recipients},',
-                  style: textTheme.caption.copyWith(
+                  style: textTheme.caption!.copyWith(
                     color: Theme.of(context)
                         .navigationRailTheme
-                        .unselectedLabelTextStyle
+                        .unselectedLabelTextStyle!
                         .color,
                   ),
                 ),
@@ -119,7 +120,7 @@ class _MailViewHeader extends StatelessWidget {
 }
 
 class _MailViewBody extends StatelessWidget {
-  const _MailViewBody({@required this.message}) : assert(message != null);
+  const _MailViewBody({required this.message});
 
   final String message;
 
@@ -127,7 +128,7 @@ class _MailViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectableText(
       message,
-      style: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16),
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 16),
     );
   }
 }

@@ -7,11 +7,10 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 
 // Duration of time (e.g. 16h 12m)
 String formattedDuration(BuildContext context, Duration duration,
-    {bool abbreviated}) {
+    {bool? abbreviated}) {
   final hoursShortForm =
-      GalleryLocalizations.of(context).craneHours(duration.inHours.toInt());
+      GalleryLocalizations.of(context)!.craneHours(duration.inHours.toInt());
   final minutesShortForm =
-      GalleryLocalizations.of(context).craneMinutes(duration.inMinutes % 60);
-  return GalleryLocalizations.of(context)
-      .craneFlightDuration(hoursShortForm, minutesShortForm);
+      GalleryLocalizations.of(context)!.craneMinutes(duration.inMinutes % 60);
+  return GalleryLocalizations.of(context)!.craneFlightDuration(hoursShortForm, minutesShortForm);
 }

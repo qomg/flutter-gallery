@@ -18,7 +18,7 @@ const int turnsToRotateRight = 1;
 const int turnsToRotateLeft = 3;
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -26,14 +26,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, RestorationMixin {
-  TabController _tabController;
+  late TabController _tabController;
   RestorableInt tabIndex = RestorableInt(0);
 
   @override
   String get restorationId => 'home_page';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(tabIndex, 'tab_index');
     _tabController.index = tabIndex.value;
   }
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage>
     Widget tabBarView;
     if (isDesktop) {
       final isTextDirectionRtl =
-          GalleryOptions.of(context).resolvedTextDirection() ==
+          GalleryOptions.of(context)!.resolvedTextDirection() ==
               TextDirection.rtl;
       final verticalRotation =
           isTextDirectionRtl ? turnsToRotateLeft : turnsToRotateRight;
@@ -172,12 +172,12 @@ class _HomePageState extends State<HomePage>
   }
 
   List<Widget> _buildTabs(
-      {BuildContext context, ThemeData theme, bool isVertical = false}) {
+      {required BuildContext context, required ThemeData theme, bool isVertical = false}) {
     return [
       _RallyTab(
         theme: theme,
         iconData: Icons.pie_chart,
-        title: GalleryLocalizations.of(context).rallyTitleOverview,
+        title: GalleryLocalizations.of(context)!.rallyTitleOverview,
         tabIndex: 0,
         tabController: _tabController,
         isVertical: isVertical,
@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage>
       _RallyTab(
         theme: theme,
         iconData: Icons.attach_money,
-        title: GalleryLocalizations.of(context).rallyTitleAccounts,
+        title: GalleryLocalizations.of(context)!.rallyTitleAccounts,
         tabIndex: 1,
         tabController: _tabController,
         isVertical: isVertical,
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage>
       _RallyTab(
         theme: theme,
         iconData: Icons.money_off,
-        title: GalleryLocalizations.of(context).rallyTitleBills,
+        title: GalleryLocalizations.of(context)!.rallyTitleBills,
         tabIndex: 2,
         tabController: _tabController,
         isVertical: isVertical,
@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage>
       _RallyTab(
         theme: theme,
         iconData: Icons.table_chart,
-        title: GalleryLocalizations.of(context).rallyTitleBudgets,
+        title: GalleryLocalizations.of(context)!.rallyTitleBudgets,
         tabIndex: 3,
         tabController: _tabController,
         isVertical: isVertical,
@@ -209,7 +209,7 @@ class _HomePageState extends State<HomePage>
       _RallyTab(
         theme: theme,
         iconData: Icons.settings,
-        title: GalleryLocalizations.of(context).rallyTitleSettings,
+        title: GalleryLocalizations.of(context)!.rallyTitleSettings,
         tabIndex: 4,
         tabController: _tabController,
         isVertical: isVertical,
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage>
 }
 
 class _RallyTabBar extends StatelessWidget {
-  const _RallyTabBar({Key key, this.tabs, this.tabController})
+  const _RallyTabBar({Key? key, required this.tabs, required this.tabController})
       : super(key: key);
 
   final List<Widget> tabs;
@@ -256,12 +256,12 @@ class _RallyTabBar extends StatelessWidget {
 
 class _RallyTab extends StatefulWidget {
   _RallyTab({
-    ThemeData theme,
-    IconData iconData,
-    String title,
-    int tabIndex,
-    TabController tabController,
-    this.isVertical,
+    required ThemeData theme,
+    required IconData iconData,
+    required String title,
+    required int tabIndex,
+    required TabController tabController,
+    required this.isVertical,
   })  : titleText = Text(title, style: theme.textTheme.button),
         isExpanded = tabController.index == tabIndex,
         icon = Icon(iconData, semanticLabel: title);
@@ -277,10 +277,10 @@ class _RallyTab extends StatefulWidget {
 
 class _RallyTabState extends State<_RallyTab>
     with SingleTickerProviderStateMixin {
-  Animation<double> _titleSizeAnimation;
-  Animation<double> _titleFadeAnimation;
-  Animation<double> _iconFadeAnimation;
-  AnimationController _controller;
+  late Animation<double> _titleSizeAnimation;
+  late Animation<double> _titleFadeAnimation;
+  late Animation<double> _iconFadeAnimation;
+  late AnimationController _controller;
 
   @override
   void initState() {

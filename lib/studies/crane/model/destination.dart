@@ -10,12 +10,11 @@ import 'package:gallery/studies/crane/model/formatters.dart';
 
 abstract class Destination {
   const Destination({
-    @required this.id,
-    @required this.destination,
-    @required this.assetSemanticLabel,
-    @required this.imageAspectRatio,
-  })  : assert(id != null),
-        assert(destination != null);
+    required this.id,
+    required this.destination,
+    required this.assetSemanticLabel,
+    required this.imageAspectRatio,
+  });
 
   final int id;
   final String destination;
@@ -33,15 +32,13 @@ abstract class Destination {
 
 class FlyDestination extends Destination {
   const FlyDestination({
-    @required int id,
-    @required String destination,
-    @required String assetSemanticLabel,
-    @required this.stops,
+    required int id,
+    required String destination,
+    required String assetSemanticLabel,
+    required this.stops,
     double imageAspectRatio = 1,
     this.duration,
-  })  : assert(stops != null),
-        assert(destination != null),
-        super(
+  })  : super(
           id: id,
           destination: destination,
           assetSemanticLabel: assetSemanticLabel,
@@ -49,21 +46,21 @@ class FlyDestination extends Destination {
         );
 
   final int stops;
-  final Duration duration;
+  final Duration? duration;
 
   @override
   String get assetName => 'crane/destinations/fly_$id.jpg';
 
   @override
   String subtitle(BuildContext context) {
-    final stopsText = GalleryLocalizations.of(context).craneFlyStops(stops);
+    final stopsText = GalleryLocalizations.of(context)!.craneFlyStops(stops);
 
     if (duration == null) {
       return stopsText;
     } else {
-      final textDirection = GalleryOptions.of(context).resolvedTextDirection();
+      final textDirection = GalleryOptions.of(context)!.resolvedTextDirection();
       final durationText =
-          formattedDuration(context, duration, abbreviated: true);
+          formattedDuration(context, duration!, abbreviated: true);
       return textDirection == TextDirection.ltr
           ? '$stopsText · $durationText'
           : '$durationText · $stopsText';
@@ -72,13 +69,13 @@ class FlyDestination extends Destination {
 
   @override
   String subtitleSemantics(BuildContext context) {
-    final stopsText = GalleryLocalizations.of(context).craneFlyStops(stops);
+    final stopsText = GalleryLocalizations.of(context)!.craneFlyStops(stops);
 
     if (duration == null) {
       return stopsText;
     } else {
       final durationText =
-          formattedDuration(context, duration, abbreviated: false);
+          formattedDuration(context, duration!, abbreviated: false);
       return '$stopsText, $durationText';
     }
   }
@@ -86,14 +83,12 @@ class FlyDestination extends Destination {
 
 class SleepDestination extends Destination {
   const SleepDestination({
-    @required int id,
-    @required String destination,
-    @required String assetSemanticLabel,
-    @required this.total,
+    required int id,
+    required String destination,
+    required String assetSemanticLabel,
+    required this.total,
     double imageAspectRatio = 1,
-  })  : assert(total != null),
-        assert(destination != null),
-        super(
+  })  : super(
           id: id,
           destination: destination,
           assetSemanticLabel: assetSemanticLabel,
@@ -107,20 +102,18 @@ class SleepDestination extends Destination {
 
   @override
   String subtitle(BuildContext context) {
-    return GalleryLocalizations.of(context).craneSleepProperties(total);
+    return GalleryLocalizations.of(context)!.craneSleepProperties(total);
   }
 }
 
 class EatDestination extends Destination {
   const EatDestination({
-    @required int id,
-    @required String destination,
-    @required String assetSemanticLabel,
-    @required this.total,
+    required int id,
+    required String destination,
+    required String assetSemanticLabel,
+    required this.total,
     double imageAspectRatio = 1,
-  })  : assert(total != null),
-        assert(destination != null),
-        super(
+  })  : super(
           id: id,
           destination: destination,
           assetSemanticLabel: assetSemanticLabel,
@@ -134,6 +127,6 @@ class EatDestination extends Destination {
 
   @override
   String subtitle(BuildContext context) {
-    return GalleryLocalizations.of(context).craneEatRestaurants(total);
+    return GalleryLocalizations.of(context)!.craneEatRestaurants(total);
   }
 }

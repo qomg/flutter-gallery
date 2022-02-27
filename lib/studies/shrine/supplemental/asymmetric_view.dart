@@ -22,15 +22,15 @@ const _bottomPadding = 44.0;
 const _cardToScreenWidthRatio = 0.59;
 
 class MobileAsymmetricView extends StatelessWidget {
-  const MobileAsymmetricView({Key key, this.products}) : super(key: key);
+  const MobileAsymmetricView({Key? key, this.products}) : super(key: key);
 
-  final List<Product> products;
+  final List<Product>? products;
 
   List<SizedBox> _buildColumns(
     BuildContext context,
     BoxConstraints constraints,
   ) {
-    if (products == null || products.isEmpty) {
+    if (products == null || products!.isEmpty) {
       return const [];
     }
 
@@ -47,7 +47,7 @@ class MobileAsymmetricView extends StatelessWidget {
 
     final imageHeight = cardHeight -
         MobileProductCard.defaultTextBoxHeight *
-            GalleryOptions.of(context).textScaleFactor(context);
+            GalleryOptions.of(context)!.textScaleFactor(context);
 
     final shouldUseAlternatingLayout =
         imageHeight > 0 && imageWidth / imageHeight < 49 / 33;
@@ -65,23 +65,23 @@ class MobileAsymmetricView extends StatelessWidget {
       // helpers for creating the index of the product list that will correspond
       // to the index of the list of columns.
 
-      return List<SizedBox>.generate(_listItemCount(products.length), (index) {
+      return List<SizedBox>.generate(_listItemCount(products!.length), (index) {
         var width = _cardToScreenWidthRatio * MediaQuery.of(context).size.width;
         Widget column;
         if (index % 2 == 0) {
           /// Even cases
           final bottom = _evenCasesIndex(index);
           column = TwoProductCardColumn(
-            bottom: products[bottom],
+            bottom: products![bottom],
             top:
-                products.length - 1 >= bottom + 1 ? products[bottom + 1] : null,
+                products!.length - 1 >= bottom + 1 ? products![bottom + 1] : null,
             imageAspectRatio: imageWidth / imageHeight,
           );
           width += 32;
         } else {
           /// Odd cases
           column = OneProductCardColumn(
-            product: products[_oddCasesIndex(index)],
+            product: products![_oddCasesIndex(index)],
             reverse: true,
           );
         }
@@ -97,7 +97,7 @@ class MobileAsymmetricView extends StatelessWidget {
       // Alternating layout: a layout of 1-product columns.
 
       return [
-        for (final product in products)
+        for (final product in products!)
           SizedBox(
             width: _cardToScreenWidthRatio * MediaQuery.of(context).size.width,
             child: Padding(
@@ -162,7 +162,7 @@ class MobileAsymmetricView extends StatelessWidget {
 }
 
 class DesktopAsymmetricView extends StatelessWidget {
-  const DesktopAsymmetricView({Key key, this.products}) : super(key: key);
+  const DesktopAsymmetricView({Key? key, required this.products}) : super(key: key);
 
   final List<Product> products;
 
@@ -170,7 +170,7 @@ class DesktopAsymmetricView extends StatelessWidget {
   Widget build(BuildContext context) {
     // Determine the scale factor for the desktop asymmetric view.
 
-    final textScaleFactor = GalleryOptions.of(context).textScaleFactor(context);
+    final textScaleFactor = GalleryOptions.of(context)!.textScaleFactor(context);
 
     // When text is larger, the images becomes wider, but at half the rate.
     final imageScaleFactor = reducedTextScale(context);
@@ -222,11 +222,11 @@ class DesktopAsymmetricView extends StatelessWidget {
 
 class DesktopColumns extends StatelessWidget {
   const DesktopColumns({
-    Key key,
-    @required this.columnCount,
-    @required this.products,
-    @required this.largeImageWidth,
-    @required this.smallImageWidth,
+    Key? key,
+    required this.columnCount,
+    required this.products,
+    required this.largeImageWidth,
+    required this.smallImageWidth,
   }) : super(key: key);
 
   final int columnCount;

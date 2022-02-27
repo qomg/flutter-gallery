@@ -19,7 +19,7 @@ import 'package:google_fonts/google_fonts.dart';
 /// The home route is the main page with tabs for sub pages.
 /// The login route is the initial route.
 class RallyApp extends StatelessWidget {
-  const RallyApp({Key key}) : super(key: key);
+  const RallyApp({Key? key}) : super(key: key);
 
   static const String loginRoute = routes.loginRoute;
   static const String homeRoute = routes.homeRoute;
@@ -36,7 +36,7 @@ class RallyApp extends StatelessWidget {
       title: 'Rally',
       debugShowCheckedModeBanner: false,
       theme: _buildRallyTheme().copyWith(
-        platform: GalleryOptions.of(context).platform,
+        platform: GalleryOptions.of(context)!.platform,
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {
             for (var type in TargetPlatform.values)
@@ -46,7 +46,7 @@ class RallyApp extends StatelessWidget {
       ),
       localizationsDelegates: GalleryLocalizations.localizationsDelegates,
       supportedLocales: GalleryLocalizations.supportedLocales,
-      locale: GalleryOptions.of(context).locale,
+      locale: GalleryOptions.of(context)!.locale,
       initialRoute: loginRoute,
       routes: <String, WidgetBuilder>{
         homeRoute: (context) => const HomePage(),

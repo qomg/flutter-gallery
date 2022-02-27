@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gallery/data/gallery_options.dart';
 
 double _textScaleFactor(BuildContext context) {
-  return GalleryOptions.of(context).textScaleFactor(context);
+  return GalleryOptions.of(context)?.textScaleFactor(context) ?? 1.0;
 }
 
 // When text is larger, this factor becomes larger, but at half the rate.

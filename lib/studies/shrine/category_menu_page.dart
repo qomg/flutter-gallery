@@ -16,18 +16,18 @@ import 'package:gallery/studies/shrine/triangle_category_indicator.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 double desktopCategoryMenuPageWidth({
-  BuildContext context,
+  required BuildContext context,
 }) {
   return 232 * reducedTextScale(context);
 }
 
 class CategoryMenuPage extends StatelessWidget {
   const CategoryMenuPage({
-    Key key,
+    Key? key,
     this.onCategoryTap,
   }) : super(key: key);
 
-  final VoidCallback onCategoryTap;
+  final VoidCallback? onCategoryTap;
 
   Widget _buttonText(String caption, TextStyle style) {
     return Padding(
@@ -40,9 +40,9 @@ class CategoryMenuPage extends StatelessWidget {
     );
   }
 
-  Widget _divider({BuildContext context}) {
+  Widget _divider({required BuildContext context}) {
     return Container(
-      width: 56 * GalleryOptions.of(context).textScaleFactor(context),
+      width: 56 * GalleryOptions.of(context)!.textScaleFactor(context),
       height: 1,
       color: const Color(0xFF8F716D),
     );
@@ -55,14 +55,14 @@ class CategoryMenuPage extends StatelessWidget {
 
     final selectedCategoryTextStyle = Theme.of(context)
         .textTheme
-        .bodyText1
+        .bodyText1!
         .copyWith(fontSize: isDesktop ? 17 : 19);
 
     final unselectedCategoryTextStyle = selectedCategoryTextStyle.copyWith(
         color: shrineBrown900.withOpacity(0.6));
 
     final indicatorHeight = (isDesktop ? 28 : 30) *
-        GalleryOptions.of(context).textScaleFactor(context);
+        GalleryOptions.of(context)!.textScaleFactor(context);
     final indicatorWidth = indicatorHeight * 34 / 28;
 
     return ScopedModelDescendant<AppStateModel>(
@@ -75,9 +75,7 @@ class CategoryMenuPage extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               model.setCategory(category);
-              if (onCategoryTap != null) {
-                onCategoryTap();
-              }
+              onCategoryTap?.call();
             },
             child: model.selectedCategory == category
                 ? CustomPaint(
@@ -99,7 +97,7 @@ class CategoryMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = isDisplayDesktop(context);
 
-    final logoutTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(
+    final logoutTextStyle = Theme.of(context).textTheme.bodyText1!.copyWith(
           fontSize: isDesktop ? 17 : 19,
           color: shrineBrown900.withOpacity(0.6),
         );
@@ -143,8 +141,7 @@ class CategoryMenuPage extends StatelessWidget {
                               .restorablePushNamed(ShrineApp.loginRoute);
                         },
                         child: _buttonText(
-                          GalleryLocalizations.of(context)
-                              .shrineLogoutButtonCaption,
+                          GalleryLocalizations.of(context)!.shrineLogoutButtonCaption,
                           logoutTextStyle,
                         ),
                       ),
@@ -154,7 +151,7 @@ class CategoryMenuPage extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.search),
                     tooltip:
-                        GalleryLocalizations.of(context).shrineTooltipSearch,
+                        GalleryLocalizations.of(context)!.shrineTooltipSearch,
                     onPressed: () {},
                   ),
                   const SizedBox(height: 72),
@@ -189,15 +186,12 @@ class CategoryMenuPage extends StatelessWidget {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            if (onCategoryTap != null) {
-                              onCategoryTap();
-                            }
+                            onCategoryTap?.call();
                             Navigator.of(context)
                                 .restorablePushNamed(ShrineApp.loginRoute);
                           },
                           child: _buttonText(
-                            GalleryLocalizations.of(context)
-                                .shrineLogoutButtonCaption,
+                            GalleryLocalizations.of(context)!.shrineLogoutButtonCaption,
                             logoutTextStyle,
                           ),
                         ),

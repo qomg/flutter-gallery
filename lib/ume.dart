@@ -27,7 +27,7 @@ Widget wrapUME(Widget app) {
       ..register(Console()) // 日志
       ..register(Analysis()) // 分析机器人
       ..register(DioInspector(dio: DioClient.defaultClient)); // Dio网络调试工具，传入Dio实例
-    return injectUMEWidget(child: app, enable: true); // 初始化
+    return UMEWidget(enable: true, child: app); // 初始化
   }
   return app;
 }

@@ -42,7 +42,7 @@ double sumOf<T>(List<T> list, double Function(T elt) getValue) {
 ///
 /// The [primaryAmount] is the balance of the account in USD.
 class AccountData {
-  const AccountData({this.name, this.primaryAmount, this.accountNumber});
+  const AccountData({required this.name, required this.primaryAmount, required this.accountNumber});
 
   /// The display name of this entity.
   final String name;
@@ -59,9 +59,9 @@ class AccountData {
 /// The [primaryAmount] is the amount due in USD.
 class BillData {
   const BillData({
-    this.name,
-    this.primaryAmount,
-    this.dueDate,
+    required this.name,
+    required this.primaryAmount,
+    required this.dueDate,
     this.isPaid = false,
   });
 
@@ -82,7 +82,7 @@ class BillData {
 ///
 /// The [primaryAmount] is the budget cap in USD.
 class BudgetData {
-  const BudgetData({this.name, this.primaryAmount, this.amountUsed});
+  const BudgetData({required this.name, required this.primaryAmount, required this.amountUsed});
 
   /// The display name of this entity.
   final String name;
@@ -96,7 +96,7 @@ class BudgetData {
 
 /// A data model for an alert.
 class AlertData {
-  AlertData({this.message, this.iconData});
+  AlertData({required this.message, required this.iconData});
 
   /// The alert message to display.
   final String message;
@@ -107,9 +107,9 @@ class AlertData {
 
 class DetailedEventData {
   const DetailedEventData({
-    this.title,
-    this.date,
-    this.amount,
+    required this.title,
+    required this.date,
+    required this.amount,
   });
 
   final String title;
@@ -119,7 +119,7 @@ class DetailedEventData {
 
 /// A data model for data displayed to the user.
 class UserDetailData {
-  UserDetailData({this.title, this.value});
+  UserDetailData({required this.title, required this.value});
 
   /// The display name of this entity.
   final String title;
@@ -135,22 +135,22 @@ class DummyDataService {
   static List<AccountData> getAccountDataList(BuildContext context) {
     return <AccountData>[
       AccountData(
-        name: GalleryLocalizations.of(context).rallyAccountDataChecking,
+        name: GalleryLocalizations.of(context)!.rallyAccountDataChecking,
         primaryAmount: 2215.13,
         accountNumber: '1234561234',
       ),
       AccountData(
-        name: GalleryLocalizations.of(context).rallyAccountDataHomeSavings,
+        name: GalleryLocalizations.of(context)!.rallyAccountDataHomeSavings,
         primaryAmount: 8678.88,
         accountNumber: '8888885678',
       ),
       AccountData(
-        name: GalleryLocalizations.of(context).rallyAccountDataCarSavings,
+        name: GalleryLocalizations.of(context)!.rallyAccountDataCarSavings,
         primaryAmount: 987.48,
         accountNumber: '8888889012',
       ),
       AccountData(
-        name: GalleryLocalizations.of(context).rallyAccountDataVacation,
+        name: GalleryLocalizations.of(context)!.rallyAccountDataVacation,
         primaryAmount: 253,
         accountNumber: '1231233456',
       ),
@@ -160,33 +160,30 @@ class DummyDataService {
   static List<UserDetailData> getAccountDetailList(BuildContext context) {
     return <UserDetailData>[
       UserDetailData(
-        title: GalleryLocalizations.of(context)
-            .rallyAccountDetailDataAnnualPercentageYield,
+        title: GalleryLocalizations.of(context)!.rallyAccountDetailDataAnnualPercentageYield,
         value: percentFormat(context).format(0.001),
       ),
       UserDetailData(
         title:
-            GalleryLocalizations.of(context).rallyAccountDetailDataInterestRate,
+            GalleryLocalizations.of(context)!.rallyAccountDetailDataInterestRate,
         value: usdWithSignFormat(context).format(1676.14),
       ),
       UserDetailData(
         title:
-            GalleryLocalizations.of(context).rallyAccountDetailDataInterestYtd,
+            GalleryLocalizations.of(context)!.rallyAccountDetailDataInterestYtd,
         value: usdWithSignFormat(context).format(81.45),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context)
-            .rallyAccountDetailDataInterestPaidLastYear,
+        title: GalleryLocalizations.of(context)!.rallyAccountDetailDataInterestPaidLastYear,
         value: usdWithSignFormat(context).format(987.12),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context)
-            .rallyAccountDetailDataNextStatement,
+        title: GalleryLocalizations.of(context)!.rallyAccountDetailDataNextStatement,
         value: shortDateFormat(context).format(DateTime.utc(2019, 12, 25)),
       ),
       UserDetailData(
         title:
-            GalleryLocalizations.of(context).rallyAccountDetailDataAccountOwner,
+            GalleryLocalizations.of(context)!.rallyAccountDetailDataAccountOwner,
         value: 'Philip Cao',
       ),
     ];
@@ -265,18 +262,18 @@ class DummyDataService {
   }
 
   static List<UserDetailData> getBillDetailList(BuildContext context,
-      {double dueTotal, double paidTotal}) {
+      {required double dueTotal, required double paidTotal}) {
     return <UserDetailData>[
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBillDetailTotalAmount,
+        title: GalleryLocalizations.of(context)!.rallyBillDetailTotalAmount,
         value: usdWithSignFormat(context).format(paidTotal + dueTotal),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBillDetailAmountPaid,
+        title: GalleryLocalizations.of(context)!.rallyBillDetailAmountPaid,
         value: usdWithSignFormat(context).format(paidTotal),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBillDetailAmountDue,
+        title: GalleryLocalizations.of(context)!.rallyBillDetailAmountDue,
         value: usdWithSignFormat(context).format(dueTotal),
       ),
     ];
@@ -285,22 +282,22 @@ class DummyDataService {
   static List<BudgetData> getBudgetDataList(BuildContext context) {
     return <BudgetData>[
       BudgetData(
-        name: GalleryLocalizations.of(context).rallyBudgetCategoryCoffeeShops,
+        name: GalleryLocalizations.of(context)!.rallyBudgetCategoryCoffeeShops,
         primaryAmount: 70,
         amountUsed: 45.49,
       ),
       BudgetData(
-        name: GalleryLocalizations.of(context).rallyBudgetCategoryGroceries,
+        name: GalleryLocalizations.of(context)!.rallyBudgetCategoryGroceries,
         primaryAmount: 170,
         amountUsed: 16.45,
       ),
       BudgetData(
-        name: GalleryLocalizations.of(context).rallyBudgetCategoryRestaurants,
+        name: GalleryLocalizations.of(context)!.rallyBudgetCategoryRestaurants,
         primaryAmount: 170,
         amountUsed: 123.25,
       ),
       BudgetData(
-        name: GalleryLocalizations.of(context).rallyBudgetCategoryClothing,
+        name: GalleryLocalizations.of(context)!.rallyBudgetCategoryClothing,
         primaryAmount: 70,
         amountUsed: 19.45,
       ),
@@ -308,18 +305,18 @@ class DummyDataService {
   }
 
   static List<UserDetailData> getBudgetDetailList(BuildContext context,
-      {double capTotal, double usedTotal}) {
+      {required double capTotal, required double usedTotal}) {
     return <UserDetailData>[
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBudgetDetailTotalCap,
+        title: GalleryLocalizations.of(context)!.rallyBudgetDetailTotalCap,
         value: usdWithSignFormat(context).format(capTotal),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBudgetDetailAmountUsed,
+        title: GalleryLocalizations.of(context)!.rallyBudgetDetailAmountUsed,
         value: usdWithSignFormat(context).format(usedTotal),
       ),
       UserDetailData(
-        title: GalleryLocalizations.of(context).rallyBudgetDetailAmountLeft,
+        title: GalleryLocalizations.of(context)!.rallyBudgetDetailAmountLeft,
         value: usdWithSignFormat(context).format(capTotal - usedTotal),
       ),
     ];
@@ -327,46 +324,42 @@ class DummyDataService {
 
   static List<String> getSettingsTitles(BuildContext context) {
     return <String>[
-      GalleryLocalizations.of(context).rallySettingsManageAccounts,
-      GalleryLocalizations.of(context).rallySettingsTaxDocuments,
-      GalleryLocalizations.of(context).rallySettingsPasscodeAndTouchId,
-      GalleryLocalizations.of(context).rallySettingsNotifications,
-      GalleryLocalizations.of(context).rallySettingsPersonalInformation,
-      GalleryLocalizations.of(context).rallySettingsPaperlessSettings,
-      GalleryLocalizations.of(context).rallySettingsFindAtms,
-      GalleryLocalizations.of(context).rallySettingsHelp,
-      GalleryLocalizations.of(context).rallySettingsSignOut,
+      GalleryLocalizations.of(context)!.rallySettingsManageAccounts,
+      GalleryLocalizations.of(context)!.rallySettingsTaxDocuments,
+      GalleryLocalizations.of(context)!.rallySettingsPasscodeAndTouchId,
+      GalleryLocalizations.of(context)!.rallySettingsNotifications,
+      GalleryLocalizations.of(context)!.rallySettingsPersonalInformation,
+      GalleryLocalizations.of(context)!.rallySettingsPaperlessSettings,
+      GalleryLocalizations.of(context)!.rallySettingsFindAtms,
+      GalleryLocalizations.of(context)!.rallySettingsHelp,
+      GalleryLocalizations.of(context)!.rallySettingsSignOut,
     ];
   }
 
   static List<AlertData> getAlerts(BuildContext context) {
     return <AlertData>[
       AlertData(
-        message: GalleryLocalizations.of(context)
-            .rallyAlertsMessageHeadsUpShopping(
+        message: GalleryLocalizations.of(context)!.rallyAlertsMessageHeadsUpShopping(
                 percentFormat(context, decimalDigits: 0).format(0.9)),
         iconData: Icons.sort,
       ),
       AlertData(
-        message: GalleryLocalizations.of(context)
-            .rallyAlertsMessageSpentOnRestaurants(
+        message: GalleryLocalizations.of(context)!.rallyAlertsMessageSpentOnRestaurants(
                 usdWithSignFormat(context, decimalDigits: 0).format(120)),
         iconData: Icons.sort,
       ),
       AlertData(
-        message: GalleryLocalizations.of(context).rallyAlertsMessageATMFees(
+        message: GalleryLocalizations.of(context)!.rallyAlertsMessageATMFees(
             usdWithSignFormat(context, decimalDigits: 0).format(24)),
         iconData: Icons.credit_card,
       ),
       AlertData(
-        message: GalleryLocalizations.of(context)
-            .rallyAlertsMessageCheckingAccount(
+        message: GalleryLocalizations.of(context)!.rallyAlertsMessageCheckingAccount(
                 percentFormat(context, decimalDigits: 0).format(0.04)),
         iconData: Icons.attach_money,
       ),
       AlertData(
-        message: GalleryLocalizations.of(context)
-            .rallyAlertsMessageUnassignedTransactions(16),
+        message: GalleryLocalizations.of(context)!.rallyAlertsMessageUnassignedTransactions(16),
         iconData: Icons.not_interested,
       ),
     ];

@@ -19,11 +19,11 @@ import 'package:gallery/studies/crane/model/destination.dart';
 
 class _FrontLayer extends StatefulWidget {
   const _FrontLayer({
-    Key key,
-    this.title,
-    this.index,
-    this.mobileTopOffset,
-    this.restorationId,
+    Key? key,
+    required this.title,
+    required this.index,
+    required this.mobileTopOffset,
+    required this.restorationId,
   }) : super(key: key);
 
   final String title;
@@ -36,7 +36,7 @@ class _FrontLayer extends StatefulWidget {
 }
 
 class _FrontLayerState extends State<_FrontLayer> {
-  List<Destination> destinations;
+  List<Destination>? destinations;
 
   static const frontLayerBorderRadius = 16.0;
   static const bottomPadding = EdgeInsets.only(bottom: 120);
@@ -95,7 +95,7 @@ class _FrontLayerState extends State<_FrontLayer> {
               ),
             ),
           ),
-          child: StaggeredGridView.countBuilder(
+          child: MasonryGridView.count(
             key: ValueKey('CraneListView-${widget.index}'),
             restorationId: widget.restorationId,
             crossAxisCount: crossAxisCount,
@@ -110,13 +110,13 @@ class _FrontLayerState extends State<_FrontLayer> {
               if (index == 0) {
                 return _header();
               } else {
-                return DestinationCard(destination: destinations[index]);
+                return DestinationCard(destination: destinations![index]);
               }
             },
-            staggeredTileBuilder: (index) => index == 0
-                ? StaggeredTile.fit(crossAxisCount)
-                : const StaggeredTile.fit(1),
-            itemCount: destinations.length,
+            // staggeredTileBuilder: (index) => index == 0
+            //     ? StaggeredTile.fit(crossAxisCount)
+            //     : const StaggeredTile.fit(1),
+            itemCount: destinations!.length,
           ),
         ),
       ),
@@ -137,11 +137,11 @@ class Backdrop extends StatefulWidget {
   final Widget backTitle;
 
   const Backdrop({
-    Key key,
-    @required this.frontLayer,
-    @required this.backLayerItems,
-    @required this.frontTitle,
-    @required this.backTitle,
+    Key? key,
+    required this.frontLayer,
+    required this.backLayerItems,
+    required this.frontTitle,
+    required this.backTitle,
   })  : assert(frontLayer != null),
         assert(backLayerItems != null),
         assert(frontTitle != null),
@@ -155,10 +155,10 @@ class Backdrop extends StatefulWidget {
 class _BackdropState extends State<Backdrop>
     with TickerProviderStateMixin, RestorationMixin {
   final RestorableInt tabIndex = RestorableInt(0);
-  TabController _tabController;
-  Animation<Offset> _flyLayerHorizontalOffset;
-  Animation<Offset> _sleepLayerHorizontalOffset;
-  Animation<Offset> _eatLayerHorizontalOffset;
+  late TabController _tabController;
+  late Animation<Offset> _flyLayerHorizontalOffset;
+  late Animation<Offset> _sleepLayerHorizontalOffset;
+  late Animation<Offset> _eatLayerHorizontalOffset;
 
   // How much the 'sleep' front layer is vertically offset relative to other
   // front layers, in pixels, with the mobile layout.
@@ -168,7 +168,7 @@ class _BackdropState extends State<Backdrop>
   String get restorationId => 'tab_non_scrollable_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(tabIndex, 'tab_index');
     _tabController.index = tabIndex.value;
   }
@@ -186,13 +186,13 @@ class _BackdropState extends State<Backdrop>
     });
 
     // Offsets to create a horizontal gap between front layers.
-    _flyLayerHorizontalOffset = _tabController.animation.drive(
+    _flyLayerHorizontalOffset = _tabController.animation!.drive(
         Tween<Offset>(begin: const Offset(0, 0), end: const Offset(-0.05, 0)));
 
-    _sleepLayerHorizontalOffset = _tabController.animation.drive(
+    _sleepLayerHorizontalOffset = _tabController.animation!.drive(
         Tween<Offset>(begin: const Offset(0.05, 0), end: const Offset(0, 0)));
 
-    _eatLayerHorizontalOffset = _tabController.animation.drive(Tween<Offset>(
+    _eatLayerHorizontalOffset = _tabController.animation!.drive(Tween<Offset>(
         begin: const Offset(0.10, 0), end: const Offset(0.05, 0)));
   }
 
@@ -211,7 +211,8 @@ class _BackdropState extends State<Backdrop>
   @override
   Widget build(BuildContext context) {
     final isDesktop = isDisplayDesktop(context);
-    final textScaleFactor = GalleryOptions.of(context).textScaleFactor(context);
+    final textScaleFactor =
+        GalleryOptions.of(context)!.textScaleFactor(context);
 
     return Material(
       color: cranePurple800,
@@ -263,7 +264,7 @@ class _BackdropState extends State<Backdrop>
                           SlideTransition(
                             position: _flyLayerHorizontalOffset,
                             child: _FrontLayer(
-                              title: GalleryLocalizations.of(context)
+                              title: GalleryLocalizations.of(context)!
                                   .craneFlySubhead,
                               index: 0,
                               mobileTopOffset: _sleepLayerTopOffset,
@@ -273,7 +274,7 @@ class _BackdropState extends State<Backdrop>
                           SlideTransition(
                             position: _sleepLayerHorizontalOffset,
                             child: _FrontLayer(
-                              title: GalleryLocalizations.of(context)
+                              title: GalleryLocalizations.of(context)!
                                   .craneSleepSubhead,
                               index: 1,
                               mobileTopOffset: 0,
@@ -283,7 +284,7 @@ class _BackdropState extends State<Backdrop>
                           SlideTransition(
                             position: _eatLayerHorizontalOffset,
                             child: _FrontLayer(
-                              title: GalleryLocalizations.of(context)
+                              title: GalleryLocalizations.of(context)!
                                   .craneEatSubhead,
                               index: 2,
                               mobileTopOffset: _sleepLayerTopOffset,
@@ -308,8 +309,11 @@ class CraneAppBar extends StatefulWidget {
   final Function(int) tabHandler;
   final TabController tabController;
 
-  const CraneAppBar({Key key, this.tabHandler, this.tabController})
-      : super(key: key);
+  const CraneAppBar({
+    Key? key,
+    required this.tabHandler,
+    required this.tabController,
+  }) : super(key: key);
 
   @override
   _CraneAppBarState createState() => _CraneAppBarState();
@@ -320,7 +324,8 @@ class _CraneAppBarState extends State<CraneAppBar> {
   Widget build(BuildContext context) {
     final isDesktop = isDisplayDesktop(context);
     final isSmallDesktop = isDisplaySmallDesktop(context);
-    final textScaleFactor = GalleryOptions.of(context).textScaleFactor(context);
+    final textScaleFactor =
+        GalleryOptions.of(context)!.textScaleFactor(context);
 
     return SafeArea(
       child: Padding(
@@ -371,9 +376,9 @@ class _CraneAppBarState extends State<CraneAppBar> {
                       duration: const Duration(milliseconds: 300),
                     ),
                     tabs: [
-                      Tab(text: GalleryLocalizations.of(context).craneFly),
-                      Tab(text: GalleryLocalizations.of(context).craneSleep),
-                      Tab(text: GalleryLocalizations.of(context).craneEat),
+                      Tab(text: GalleryLocalizations.of(context)!.craneFly),
+                      Tab(text: GalleryLocalizations.of(context)!.craneSleep),
+                      Tab(text: GalleryLocalizations.of(context)!.craneEat),
                     ],
                   ),
                 ),

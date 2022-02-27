@@ -11,7 +11,7 @@ double _shippingCostPerItem = 7;
 
 class AppStateModel extends Model {
   // All the available products.
-  List<Product> _availableProducts;
+  List<Product>? _availableProducts;
 
   // The currently selected category of products.
   Category _selectedCategory = categoryAll;
@@ -29,7 +29,7 @@ class AppStateModel extends Model {
   // Totaled prices of the items in the cart.
   double get subtotalCost {
     return _productsInCart.keys
-        .map((id) => _availableProducts[id].price * _productsInCart[id])
+        .map((id) => _availableProducts![id].price * _productsInCart[id]!)
         .fold(0.0, (sum, e) => sum + e);
   }
 
@@ -52,9 +52,9 @@ class AppStateModel extends Model {
     }
 
     if (_selectedCategory == categoryAll) {
-      return List<Product>.from(_availableProducts);
+      return List<Product>.from(_availableProducts!);
     } else {
-      return _availableProducts
+      return _availableProducts!
           .where((p) => p.category == _selectedCategory)
           .toList();
     }
@@ -65,7 +65,7 @@ class AppStateModel extends Model {
     if (!_productsInCart.containsKey(productId)) {
       _productsInCart[productId] = 1;
     } else {
-      _productsInCart[productId]++;
+      _productsInCart[productId] = _productsInCart[productId]! + 1;
     }
 
     notifyListeners();
@@ -75,11 +75,10 @@ class AppStateModel extends Model {
   // quantity must be non-null positive value.
   void addMultipleProductsToCart(int productId, int quantity) {
     assert(quantity > 0);
-    assert(quantity != null);
     if (!_productsInCart.containsKey(productId)) {
       _productsInCart[productId] = quantity;
     } else {
-      _productsInCart[productId] += quantity;
+      _productsInCart[productId] = _productsInCart[productId]! + quantity;
     }
 
     notifyListeners();
@@ -91,7 +90,7 @@ class AppStateModel extends Model {
       if (_productsInCart[productId] == 1) {
         _productsInCart.remove(productId);
       } else {
-        _productsInCart[productId]--;
+        _productsInCart[productId] = _productsInCart[productId]! - 1;
       }
     }
 
@@ -100,7 +99,7 @@ class AppStateModel extends Model {
 
   // Returns the Product instance matching the provided id.
   Product getProductById(int id) {
-    return _availableProducts.firstWhere((p) => p.id == id);
+    return _availableProducts!.firstWhere((p) => p.id == id);
   }
 
   // Removes everything from the cart.

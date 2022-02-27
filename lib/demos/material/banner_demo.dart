@@ -14,7 +14,7 @@ enum BannerDemoAction {
 }
 
 class BannerDemo extends StatefulWidget {
-  const BannerDemo({Key key}) : super(key: key);
+  const BannerDemo({Key? key}) : super(key: key);
 
   @override
   _BannerDemoState createState() => _BannerDemoState();
@@ -27,7 +27,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
   String get restorationId => 'banner_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_displayBanner, 'display_banner');
     registerForRestoration(_showMultipleActions, 'show_multiple_actions');
     registerForRestoration(_showLeading, 'show_leading');
@@ -67,7 +67,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final banner = MaterialBanner(
-      content: Text(GalleryLocalizations.of(context).bannerDemoText),
+      content: Text(GalleryLocalizations.of(context)!.bannerDemoText),
       leading: _showLeading.value
           ? CircleAvatar(
               backgroundColor: colorScheme.primary,
@@ -81,7 +81,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
               _displayBanner.value = false;
             });
           },
-          child: Text(GalleryLocalizations.of(context).signIn),
+          child: Text(GalleryLocalizations.of(context)!.signIn),
         ),
         if (_showMultipleActions.value)
           TextButton(
@@ -90,7 +90,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
                 _displayBanner.value = false;
               });
             },
-            child: Text(GalleryLocalizations.of(context).dismiss),
+            child: Text(GalleryLocalizations.of(context)!.dismiss),
           ),
       ],
       backgroundColor: colorScheme.background,
@@ -99,7 +99,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(GalleryLocalizations.of(context).demoBannerTitle),
+        title: Text(GalleryLocalizations.of(context)!.demoBannerTitle),
         actions: [
           PopupMenuButton<BannerDemoAction>(
             onSelected: handleDemoAction,
@@ -107,20 +107,20 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
               PopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.reset,
                 child:
-                    Text(GalleryLocalizations.of(context).bannerDemoResetText),
+                    Text(GalleryLocalizations.of(context)!.bannerDemoResetText),
               ),
               const PopupMenuDivider(),
               CheckedPopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.showMultipleActions,
                 checked: _showMultipleActions.value,
                 child: Text(
-                    GalleryLocalizations.of(context).bannerDemoMultipleText),
+                    GalleryLocalizations.of(context)!.bannerDemoMultipleText),
               ),
               CheckedPopupMenuItem<BannerDemoAction>(
                 value: BannerDemoAction.showLeading,
                 checked: _showLeading.value,
                 child: Text(
-                    GalleryLocalizations.of(context).bannerDemoLeadingText),
+                    GalleryLocalizations.of(context)!.bannerDemoLeadingText),
               ),
             ],
           ),
@@ -135,7 +135,7 @@ class _BannerDemoState extends State<BannerDemo> with RestorationMixin {
           }
           return ListTile(
             title: Text(
-              GalleryLocalizations.of(context).starterAppDrawerItem(
+              GalleryLocalizations.of(context)!.starterAppDrawerItem(
                   _displayBanner.value ? index : index + 1),
             ),
           );

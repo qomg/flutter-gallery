@@ -10,7 +10,7 @@ import 'package:gallery/studies/rally/data.dart';
 import 'package:gallery/studies/rally/routes.dart' as rally_route;
 
 class SettingsView extends StatefulWidget {
-  const SettingsView({Key key}) : super(key: key);
+  const SettingsView({Key? key}) : super(key: key);
 
   @override
   _SettingsViewState createState() => _SettingsViewState();

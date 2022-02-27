@@ -9,17 +9,17 @@ import 'package:gallery/studies/shrine/supplemental/product_card.dart';
 
 class TwoProductCardColumn extends StatelessWidget {
   const TwoProductCardColumn({
-    Key key,
-    @required this.bottom,
+    Key? key,
+    required this.bottom,
     this.top,
-    @required this.imageAspectRatio,
-  })  : assert(bottom != null),
-        super(key: key);
+    required this.imageAspectRatio,
+  })  : super(key: key);
 
   static const double spacerHeight = 44;
   static const double horizontalPadding = 28;
 
-  final Product bottom, top;
+  final Product? top;
+  final Product bottom;
   final double imageAspectRatio;
 
   @override
@@ -55,12 +55,12 @@ class TwoProductCardColumn extends StatelessWidget {
 
 class OneProductCardColumn extends StatelessWidget {
   const OneProductCardColumn({
-    Key key,
+    Key? key,
     this.product,
-    @required this.reverse,
+    required this.reverse,
   }) : super(key: key);
 
-  final Product product;
+  final Product? product;
 
   // Whether the product column should align to the bottom.
   final bool reverse;

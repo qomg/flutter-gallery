@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 // BEGIN pickerDemo
 
 class PickerDemo extends StatefulWidget {
-  const PickerDemo({Key key, this.type}) : super(key: key);
+  const PickerDemo({Key? key, required this.type}) : super(key: key);
 
   final PickerDemoType type;
 
@@ -26,9 +26,9 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
   final RestorableDateTime _startDate = RestorableDateTime(DateTime.now());
   final RestorableDateTime _endDate = RestorableDateTime(DateTime.now());
 
-  RestorableRouteFuture<DateTime> _restorableDatePickerRouteFuture;
-  RestorableRouteFuture<DateTimeRange> _restorableDateRangePickerRouteFuture;
-  RestorableRouteFuture<TimeOfDay> _restorableTimePickerRouteFuture;
+  late RestorableRouteFuture<DateTime> _restorableDatePickerRouteFuture;
+  late RestorableRouteFuture<DateTimeRange> _restorableDateRangePickerRouteFuture;
+  late RestorableRouteFuture<TimeOfDay> _restorableTimePickerRouteFuture;
 
   void _selectDate(DateTime selectedDate) {
     if (selectedDate != null && selectedDate != _fromDate.value) {
@@ -57,7 +57,7 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
 
   static Route<DateTime> _datePickerRoute(
     BuildContext context,
-    Object arguments,
+    Object? arguments,
   ) {
     return DialogRoute<DateTime>(
       context: context,
@@ -74,7 +74,7 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
 
   static Route<TimeOfDay> _timePickerRoute(
     BuildContext context,
-    Object arguments,
+    Object? arguments,
   ) {
     final args = arguments as List<Object>;
     final initialTime = TimeOfDay(
@@ -95,7 +95,7 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
 
   static Route<DateTimeRange> _dateRangePickerRoute(
     BuildContext context,
-    Object arguments,
+    Object? arguments,
   ) {
     return DialogRoute<DateTimeRange>(
       context: context,
@@ -141,7 +141,7 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
   String get restorationId => 'picker_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_fromDate, 'from_date');
     registerForRestoration(_fromTime, 'from_time');
     registerForRestoration(_startDate, 'start_date');
@@ -163,11 +163,11 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
   String get _title {
     switch (widget.type) {
       case PickerDemoType.date:
-        return GalleryLocalizations.of(context).demoDatePickerTitle;
+        return GalleryLocalizations.of(context)!.demoDatePickerTitle;
       case PickerDemoType.time:
-        return GalleryLocalizations.of(context).demoTimePickerTitle;
+        return GalleryLocalizations.of(context)!.demoTimePickerTitle;
       case PickerDemoType.range:
-        return GalleryLocalizations.of(context).demoDateRangePickerTitle;
+        return GalleryLocalizations.of(context)!.demoDateRangePickerTitle;
         break;
     }
     return '';
@@ -219,7 +219,7 @@ class _PickerDemoState extends State<PickerDemo> with RestorationMixin {
                       }
                     },
                     child: Text(
-                      GalleryLocalizations.of(context).demoPickersShowPicker,
+                      GalleryLocalizations.of(context)!.demoPickersShowPicker,
                     ),
                   )
                 ],

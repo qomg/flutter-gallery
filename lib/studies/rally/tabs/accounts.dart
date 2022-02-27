@@ -12,7 +12,7 @@ import 'package:gallery/studies/rally/tabs/sidebar.dart';
 
 /// A page that shows a summary of accounts.
 class AccountsView extends StatelessWidget {
-  const AccountsView({Key key}) : super(key: key);
+  const AccountsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class AccountsView extends StatelessWidget {
     return TabWithSidebar(
       restorationId: 'accounts_view',
       mainView: FinancialEntityView(
-        heroLabel: GalleryLocalizations.of(context).rallyAccountTotal,
+        heroLabel: GalleryLocalizations.of(context)!.rallyAccountTotal,
         heroAmount: balanceTotal,
         segments: buildSegmentsFromAccountItems(items),
         wholeAmount: balanceTotal,

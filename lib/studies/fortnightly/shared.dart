@@ -13,26 +13,29 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class ArticleData {
-  ArticleData(
-      {this.imageUrl,
-      this.imageAspectRatio,
-      this.category,
-      this.title,
-      this.snippet});
+  ArticleData({
+    required this.imageUrl,
+    required this.imageAspectRatio,
+    required this.category,
+    required this.title,
+    this.snippet,
+  });
 
   final String imageUrl;
   final double imageAspectRatio;
   final String category;
   final String title;
-  final String snippet;
+  final String? snippet;
+
+  bool get hasSnippet => snippet != null && snippet!.isNotEmpty;
 }
 
 class HorizontalArticlePreview extends StatelessWidget {
-  const HorizontalArticlePreview({Key key, this.data, this.minutes})
+  const HorizontalArticlePreview({Key? key, required this.data, this.minutes})
       : super(key: key);
 
   final ArticleData data;
-  final int minutes;
+  final int? minutes;
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +55,14 @@ class HorizontalArticlePreview extends StatelessWidget {
               const SizedBox(height: 12),
               SelectableText(
                 data.title,
-                style: textTheme.headline5.copyWith(fontSize: 16),
+                style: textTheme.headline5!.copyWith(fontSize: 16),
               ),
             ],
           ),
         ),
         if (minutes != null) ...[
           SelectableText(
-            GalleryLocalizations.of(context).craneMinutes(minutes),
+            GalleryLocalizations.of(context)!.craneMinutes(minutes!),
             style: textTheme.bodyText1,
           ),
           const SizedBox(width: 8),
@@ -81,16 +84,16 @@ class HorizontalArticlePreview extends StatelessWidget {
 
 class VerticalArticlePreview extends StatelessWidget {
   const VerticalArticlePreview({
-    Key key,
-    this.data,
+    Key? key,
+    required this.data,
     this.width,
     this.headlineTextStyle,
     this.showSnippet = false,
   }) : super(key: key);
 
   final ArticleData data;
-  final double width;
-  final TextStyle headlineTextStyle;
+  final double? width;
+  final TextStyle? headlineTextStyle;
   final bool showSnippet;
 
   @override
@@ -131,10 +134,10 @@ class VerticalArticlePreview extends StatelessWidget {
             data.title,
             style: headlineTextStyle ?? textTheme.headline5,
           ),
-          if (showSnippet) ...[
+          if (showSnippet && data.hasSnippet) ...[
             const SizedBox(height: 4),
             SelectableText(
-              data.snippet,
+              data.snippet!,
               style: textTheme.bodyText2,
             ),
           ],
@@ -162,21 +165,22 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
       data: ArticleData(
         imageUrl: 'fortnightly/fortnightly_healthcare.jpg',
         imageAspectRatio: 391 / 248,
-        category:
-            GalleryLocalizations.of(context).fortnightlyMenuWorld.toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineHealthcare,
+        category: GalleryLocalizations.of(context)!
+            .fortnightlyMenuWorld
+            .toUpperCase(),
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineHealthcare,
       ),
-      headlineTextStyle: textTheme.headline5.copyWith(fontSize: 20),
+      headlineTextStyle: textTheme.headline5!.copyWith(fontSize: 20),
     ),
     articleDivider,
     HorizontalArticlePreview(
       data: ArticleData(
         imageUrl: 'fortnightly/fortnightly_war.png',
         imageAspectRatio: 1,
-        category: GalleryLocalizations.of(context)
+        category: GalleryLocalizations.of(context)!
             .fortnightlyMenuPolitics
             .toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineWar,
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineWar,
       ),
     ),
     articleDivider,
@@ -185,13 +189,13 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
         imageUrl: 'fortnightly/fortnightly_gas.png',
         imageAspectRatio: 1,
         category:
-            GalleryLocalizations.of(context).fortnightlyMenuTech.toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineGasoline,
+            GalleryLocalizations.of(context)!.fortnightlyMenuTech.toUpperCase(),
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineGasoline,
       ),
     ),
     sectionDivider,
     SelectableText(
-      GalleryLocalizations.of(context).fortnightlyLatestUpdates,
+      GalleryLocalizations.of(context)!.fortnightlyLatestUpdates,
       style: textTheme.headline6,
     ),
     articleDivider,
@@ -199,10 +203,10 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
       data: ArticleData(
         imageUrl: 'fortnightly/fortnightly_army.png',
         imageAspectRatio: 1,
-        category: GalleryLocalizations.of(context)
+        category: GalleryLocalizations.of(context)!
             .fortnightlyMenuPolitics
             .toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineArmy,
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineArmy,
       ),
       minutes: 2,
     ),
@@ -211,9 +215,10 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
       data: ArticleData(
         imageUrl: 'fortnightly/fortnightly_stocks.png',
         imageAspectRatio: 77 / 64,
-        category:
-            GalleryLocalizations.of(context).fortnightlyMenuWorld.toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineStocks,
+        category: GalleryLocalizations.of(context)!
+            .fortnightlyMenuWorld
+            .toUpperCase(),
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineStocks,
       ),
       minutes: 5,
     ),
@@ -223,8 +228,8 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
         imageUrl: 'fortnightly/fortnightly_fabrics.png',
         imageAspectRatio: 76 / 64,
         category:
-            GalleryLocalizations.of(context).fortnightlyMenuTech.toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineFabrics,
+            GalleryLocalizations.of(context)!.fortnightlyMenuTech.toUpperCase(),
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineFabrics,
       ),
       minutes: 4,
     ),
@@ -233,7 +238,7 @@ List<Widget> buildArticlePreviewItems(BuildContext context) {
 }
 
 class HashtagBar extends StatelessWidget {
-  const HashtagBar({Key key}) : super(key: key);
+  const HashtagBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -254,35 +259,35 @@ class HashtagBar extends StatelessWidget {
           const SizedBox(width: 16),
           Center(
             child: SelectableText(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingTechDesign}',
+              '#${GalleryLocalizations.of(context)!.fortnightlyTrendingTechDesign}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
             child: SelectableText(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingReform}',
+              '#${GalleryLocalizations.of(context)!.fortnightlyTrendingReform}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
             child: SelectableText(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingHealthcareRevolution}',
+              '#${GalleryLocalizations.of(context)!.fortnightlyTrendingHealthcareRevolution}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
             child: SelectableText(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingGreenArmy}',
+              '#${GalleryLocalizations.of(context)!.fortnightlyTrendingGreenArmy}',
               style: textTheme.subtitle2,
             ),
           ),
           verticalDivider,
           Center(
             child: SelectableText(
-              '#${GalleryLocalizations.of(context).fortnightlyTrendingStocks}',
+              '#${GalleryLocalizations.of(context)!.fortnightlyTrendingStocks}',
               style: textTheme.subtitle2,
             ),
           ),
@@ -294,7 +299,7 @@ class HashtagBar extends StatelessWidget {
 }
 
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({Key key, this.isCloseable = false}) : super(key: key);
+  const NavigationMenu({Key? key, this.isCloseable = false}) : super(key: key);
 
   final bool isCloseable;
 
@@ -319,25 +324,25 @@ class NavigationMenu extends StatelessWidget {
           ),
         const SizedBox(height: 32),
         MenuItem(
-          GalleryLocalizations.of(context).fortnightlyMenuFrontPage,
+          GalleryLocalizations.of(context)!.fortnightlyMenuFrontPage,
           header: true,
         ),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuWorld),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuUS),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuPolitics),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuBusiness),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuTech),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuScience),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuSports),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuTravel),
-        MenuItem(GalleryLocalizations.of(context).fortnightlyMenuCulture),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuWorld),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuUS),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuPolitics),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuBusiness),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuTech),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuScience),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuSports),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuTravel),
+        MenuItem(GalleryLocalizations.of(context)!.fortnightlyMenuCulture),
       ],
     );
   }
 }
 
 class MenuItem extends StatelessWidget {
-  const MenuItem(this.title, {Key key, this.header = false}) : super(key: key);
+  const MenuItem(this.title, {Key? key, this.header = false}) : super(key: key);
 
   final String title;
   final bool header;
@@ -356,7 +361,7 @@ class MenuItem extends StatelessWidget {
           Expanded(
             child: SelectableText(
               title,
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
+              style: Theme.of(context).textTheme.subtitle1!.copyWith(
                     fontWeight: header ? FontWeight.w700 : FontWeight.w600,
                     fontSize: 16,
                   ),
@@ -369,7 +374,11 @@ class MenuItem extends StatelessWidget {
 }
 
 class StockItem extends StatelessWidget {
-  const StockItem({Key key, this.ticker, this.price, this.percent})
+  const StockItem(
+      {Key? key,
+      required this.ticker,
+      required this.price,
+      required this.percent})
       : super(key: key);
 
   final String ticker;
@@ -380,7 +389,7 @@ class StockItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final percentFormat = NumberFormat.decimalPercentPattern(
-      locale: GalleryOptions.of(context).locale.toString(),
+      locale: GalleryOptions.of(context)!.locale.toString(),
       decimalDigits: 2,
     );
 
@@ -394,14 +403,14 @@ class StockItem extends StatelessWidget {
             Expanded(
               child: SelectableText(
                 price,
-                style: textTheme.subtitle2.copyWith(
-                  color: textTheme.subtitle2.color.withOpacity(0.75),
+                style: textTheme.subtitle2!.copyWith(
+                  color: textTheme.subtitle2!.color!.withOpacity(0.75),
                 ),
               ),
             ),
             SelectableText(
               percent > 0 ? '+' : '-',
-              style: textTheme.subtitle2.copyWith(
+              style: textTheme.subtitle2!.copyWith(
                 fontSize: 12,
                 color: percent > 0
                     ? const Color(0xff20CF63)
@@ -411,9 +420,9 @@ class StockItem extends StatelessWidget {
             const SizedBox(width: 4),
             SelectableText(
               percentFormat.format(percent.abs() / 100),
-              style: textTheme.caption.copyWith(
+              style: textTheme.caption!.copyWith(
                 fontSize: 12,
-                color: textTheme.subtitle2.color.withOpacity(0.75),
+                color: textTheme.subtitle2!.color!.withOpacity(0.75),
               ),
             ),
           ],
@@ -486,7 +495,8 @@ List<Widget> buildStockItems(BuildContext context) {
 }
 
 class VideoPreview extends StatelessWidget {
-  const VideoPreview({Key key, this.data, this.time}) : super(key: key);
+  const VideoPreview({Key? key, required this.data, required this.time})
+      : super(key: key);
 
   final ArticleData data;
   final String time;
@@ -528,7 +538,7 @@ class VideoPreview extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         SelectableText(data.title,
-            style: textTheme.headline5.copyWith(fontSize: 16)),
+            style: textTheme.headline5!.copyWith(fontSize: 16)),
       ],
     );
   }
@@ -540,10 +550,10 @@ List<Widget> buildVideoPreviewItems(BuildContext context) {
       data: ArticleData(
         imageUrl: 'fortnightly/fortnightly_feminists.jpg',
         imageAspectRatio: 148 / 88,
-        category: GalleryLocalizations.of(context)
+        category: GalleryLocalizations.of(context)!
             .fortnightlyMenuPolitics
             .toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineFeminists,
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineFeminists,
       ),
       time: '2:31',
     ),
@@ -553,8 +563,8 @@ List<Widget> buildVideoPreviewItems(BuildContext context) {
         imageUrl: 'fortnightly/fortnightly_bees.jpg',
         imageAspectRatio: 148 / 88,
         category:
-            GalleryLocalizations.of(context).fortnightlyMenuUS.toUpperCase(),
-        title: GalleryLocalizations.of(context).fortnightlyHeadlineBees,
+            GalleryLocalizations.of(context)!.fortnightlyMenuUS.toUpperCase(),
+        title: GalleryLocalizations.of(context)!.fortnightlyHeadlineBees,
       ),
       time: '1:37',
     ),

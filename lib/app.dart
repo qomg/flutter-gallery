@@ -15,8 +15,8 @@ import 'themes/gallery_theme_data.dart';
 
 class GalleryApp extends StatelessWidget {
   const GalleryApp({
-    Key key,
-    this.initialRoute,
+    Key? key,
+    this.initialRoute = '',
     this.isTestMode = false,
   }) : super(key: key);
 
@@ -47,12 +47,12 @@ class GalleryApp extends StatelessWidget {
             restorationScopeId: 'rootGallery',
             title: 'Flutter Gallery',
             debugShowCheckedModeBanner: false,
-            themeMode: GalleryOptions.of(context).themeMode,
+            themeMode: GalleryOptions.of(context)?.themeMode,
             theme: GalleryThemeData.lightThemeData.copyWith(
-              platform: GalleryOptions.of(context).platform,
+              platform: GalleryOptions.of(context)?.platform,
             ),
             darkTheme: GalleryThemeData.darkThemeData.copyWith(
-              platform: GalleryOptions.of(context).platform,
+              platform: GalleryOptions.of(context)?.platform,
             ),
             localizationsDelegates: const [
               ...GalleryLocalizations.localizationsDelegates,
@@ -60,7 +60,7 @@ class GalleryApp extends StatelessWidget {
             ],
             initialRoute: initialRoute,
             supportedLocales: GalleryLocalizations.supportedLocales,
-            locale: GalleryOptions.of(context).locale,
+            locale: GalleryOptions.of(context)?.locale,
             localeResolutionCallback: (locale, supportedLocales) {
               deviceLocale = locale;
               return locale;
@@ -75,7 +75,7 @@ class GalleryApp extends StatelessWidget {
 
 class RootPage extends StatelessWidget {
   const RootPage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

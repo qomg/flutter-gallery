@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 // BEGIN cupertinoButtonDemo
 
 class CupertinoButtonDemo extends StatelessWidget {
-  const CupertinoButtonDemo({Key key}) : super(key: key);
+  const CupertinoButtonDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CupertinoButtonDemo extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         automaticallyImplyLeading: false,
         middle:
-            Text(GalleryLocalizations.of(context).demoCupertinoButtonsTitle),
+            Text(GalleryLocalizations.of(context)!.demoCupertinoButtonsTitle),
       ),
       child: Center(
         child: Column(
@@ -26,14 +26,14 @@ class CupertinoButtonDemo extends StatelessWidget {
             CupertinoButton(
               onPressed: () {},
               child: Text(
-                GalleryLocalizations.of(context).cupertinoButton,
+                GalleryLocalizations.of(context)!.cupertinoButton,
               ),
             ),
             const SizedBox(height: 16),
             CupertinoButton.filled(
               onPressed: () {},
               child: Text(
-                GalleryLocalizations.of(context).cupertinoButtonWithBackground,
+                GalleryLocalizations.of(context)!.cupertinoButtonWithBackground,
               ),
             ),
           ],

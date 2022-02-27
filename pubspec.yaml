@@ -14,57 +14,59 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  adaptive_breakpoints: ^0.1.0
-  animations: ^2.0.0
+  adaptive_breakpoints: ^0.1.1
+  animations: ^2.0.2
   collection: ^1.15.0
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.4
   flutter_gallery_assets: ^1.0.2
-  flutter_localized_locales: ^2.0.1
-  flutter_staggered_grid_view: ^0.4.0
-  google_fonts: ^2.0.0
+  flutter_localized_locales: ^2.0.3
+  flutter_staggered_grid_view: ^0.6.1
+  google_fonts: ^2.3.1
   intl: ^0.17.0
-  meta: ^1.3.0
-  package_info_plus: ^1.0.1
-  provider: ^6.0.0
+  meta: ^1.7.0
+  package_info_plus: ^1.4.0
+  provider: ^6.0.2
   rally_assets: ^3.0.1
   scoped_model: ^2.0.0-nullsafety.0
   shrine_images: ^2.0.1
-  url_launcher: ^6.0.3
-  vector_math: ^2.1.0
-  dio: ^4.0.1
+  url_launcher: ^6.0.20
+  vector_math: ^2.1.1
+  dio: ^4.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_driver:
     sdk: flutter
-  args: ^2.1.0
+  args: ^2.3.0
   #build_runner: ^2.1.1
-  flutter_lints: ^1.0.2
+  flutter_lints: ^1.0.4
   grinder: ^0.9.0
   path: ^1.8.0
-  pedantic: ^1.11.0
+  pedantic: ^1.11.1
   string_scanner: ^1.1.0
-  test: ^1.16.8
+  test: ^1.19.5
   web_benchmarks: ^0.0.5
-  # dokit
   dokit:
-    git:
-      url: http://gitlab.yeahka.com/App/Flutter/dokit.git
-      ref: master
+   #path: /Users/suhao/Yeahka/Flutter/dokit-0.8.0-nullsafety.0
+   git:
+    #  url: http://gitlab.yeahka.com/App/Flutter/dokit.git
+     url: git@gitee.com:qomg/dokit.git
+     ref: master
   # ume
-  flutter_ume: ^0.2.1
-  flutter_ume_kit_ui: ^0.2.1
-  flutter_ume_kit_device: ^0.2.1
-  flutter_ume_kit_perf: ^0.2.1
-  flutter_ume_kit_show_code: ^0.2.1
-  flutter_ume_kit_console: ^0.2.1
-  flutter_ume_kit_dio: ^0.2.0  # 仅支持 null-safety 版本
+  flutter_ume: ^0.3.0+1
+  flutter_ume_kit_ui: ^0.3.0+1
+  flutter_ume_kit_device: ^0.3.0
+  flutter_ume_kit_perf: ^0.3.0
+  flutter_ume_kit_show_code: ^0.3.0
+  flutter_ume_kit_console: ^0.3.0
+  flutter_ume_kit_dio: ^0.3.0  # 仅支持 null-safety 版本
   flutter_ume_kit_analysis:
-    #path: /Users/suhao/Yeahka/Flutter/flutter_ume_kit_analysis
-    git:
-      url: http://gitlab.yeahka.com/App/Flutter/flutter_ume_kit_analysis.git
-      ref: master
+   #path: /Users/suhao/Yeahka/Flutter/flutter_ume_kit_analysis
+   git:
+    #  url: http://gitlab.yeahka.com/App/Flutter/flutter_ume_kit_analysis.git
+     url: git@gitee.com:qomg/flutter_ume_kit_analysis.git
+     ref: master
 
 
 flutter:

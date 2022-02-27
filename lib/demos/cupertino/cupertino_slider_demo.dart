@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 // BEGIN cupertinoSliderDemo
 
 class CupertinoSliderDemo extends StatefulWidget {
-  const CupertinoSliderDemo({Key key}) : super(key: key);
+  const CupertinoSliderDemo({Key? key}) : super(key: key);
 
   @override
   _CupertinoSliderDemoState createState() => _CupertinoSliderDemoState();
@@ -24,7 +24,7 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
   String get restorationId => 'cupertino_slider_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_value, 'value');
     registerForRestoration(_discreteValue, 'discrete_value');
   }
@@ -34,7 +34,7 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         automaticallyImplyLeading: false,
-        middle: Text(GalleryLocalizations.of(context).demoCupertinoSliderTitle),
+        middle: Text(GalleryLocalizations.of(context)!.demoCupertinoSliderTitle),
       ),
       child: DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
@@ -60,8 +60,7 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
                   ),
                   MergeSemantics(
                     child: Text(
-                      GalleryLocalizations.of(context)
-                          .demoCupertinoSliderContinuous(
+                      GalleryLocalizations.of(context)!.demoCupertinoSliderContinuous(
                         _value.value.toStringAsFixed(1),
                       ),
                     ),
@@ -87,8 +86,7 @@ class _CupertinoSliderDemoState extends State<CupertinoSliderDemo>
                   ),
                   MergeSemantics(
                     child: Text(
-                      GalleryLocalizations.of(context)
-                          .demoCupertinoSliderDiscrete(
+                      GalleryLocalizations.of(context)!.demoCupertinoSliderDiscrete(
                         _discreteValue.value.toStringAsFixed(1),
                       ),
                     ),

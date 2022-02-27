@@ -12,22 +12,21 @@ typedef CategoryHeaderTapCallback = Function(bool shouldOpenList);
 
 class CategoryListItem extends StatefulWidget {
   const CategoryListItem({
-    Key key,
+    Key? key,
     this.restorationId,
-    this.category,
+    required this.category,
     this.imageString,
     this.demos = const [],
     this.initiallyExpanded = false,
     this.onTap,
-  })  : assert(initiallyExpanded != null),
-        super(key: key);
+  })  : super(key: key);
 
   final GalleryDemoCategory category;
-  final String restorationId;
-  final String imageString;
+  final String? restorationId;
+  final String? imageString;
   final List<GalleryDemo> demos;
   final bool initiallyExpanded;
-  final CategoryHeaderTapCallback onTap;
+  final CategoryHeaderTapCallback? onTap;
 
   @override
   _CategoryListItemState createState() => _CategoryListItemState();
@@ -38,14 +37,14 @@ class _CategoryListItemState extends State<CategoryListItem>
   static final Animatable<double> _easeInTween =
       CurveTween(curve: Curves.easeIn);
   static const _expandDuration = Duration(milliseconds: 200);
-  AnimationController _controller;
-  Animation<double> _childrenHeightFactor;
-  Animation<double> _headerChevronOpacity;
-  Animation<double> _headerHeight;
-  Animation<EdgeInsetsGeometry> _headerMargin;
-  Animation<EdgeInsetsGeometry> _headerImagePadding;
-  Animation<EdgeInsetsGeometry> _childrenPadding;
-  Animation<BorderRadius> _headerBorderRadius;
+  late AnimationController _controller;
+  late Animation<double> _childrenHeightFactor;
+  late Animation<double> _headerChevronOpacity;
+  late Animation<double> _headerHeight;
+  late Animation<EdgeInsetsGeometry> _headerMargin;
+  late Animation<EdgeInsetsGeometry> _headerImagePadding;
+  late Animation<EdgeInsetsGeometry> _childrenPadding;
+  late Animation<BorderRadius?> _headerBorderRadius;
 
   @override
   void initState() {
@@ -99,25 +98,19 @@ class _CategoryListItemState extends State<CategoryListItem>
       case AnimationStatus.reverse:
         return true;
     }
-    assert(false);
-    return null;
   }
 
   void _handleTap() {
     if (_shouldOpenList()) {
       _controller.forward();
-      if (widget.onTap != null) {
-        widget.onTap(true);
-      }
+      widget.onTap?.call(true);
     } else {
       _controller.reverse();
-      if (widget.onTap != null) {
-        widget.onTap(false);
-      }
+      widget.onTap?.call(false);
     }
   }
 
-  Widget _buildHeaderWithChildren(BuildContext context, Widget child) {
+  Widget _buildHeaderWithChildren(BuildContext context, Widget? child) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -161,7 +154,7 @@ class _CategoryListItemState extends State<CategoryListItem>
 
 class _CategoryHeader extends StatelessWidget {
   const _CategoryHeader({
-    Key key,
+    Key? key,
     this.margin,
     this.imagePadding,
     this.borderRadius,
@@ -172,14 +165,14 @@ class _CategoryHeader extends StatelessWidget {
     this.onTap,
   }) : super(key: key);
 
-  final EdgeInsetsGeometry margin;
-  final EdgeInsetsGeometry imagePadding;
-  final double height;
-  final BorderRadiusGeometry borderRadius;
-  final String imageString;
-  final GalleryDemoCategory category;
-  final double chevronOpacity;
-  final GestureTapCallback onTap;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? imagePadding;
+  final double? height;
+  final BorderRadiusGeometry? borderRadius;
+  final String? imageString;
+  final GalleryDemoCategory? category;
+  final double? chevronOpacity;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -187,14 +180,14 @@ class _CategoryHeader extends StatelessWidget {
     return Container(
       margin: margin,
       child: Material(
-        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        shape: RoundedRectangleBorder(borderRadius: borderRadius ?? BorderRadius.zero),
         color: colorScheme.onBackground,
         clipBehavior: Clip.antiAlias,
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: InkWell(
             // Makes integration tests possible.
-            key: ValueKey('${category.name}CategoryHeader'),
+            key: ValueKey('${category?.name}CategoryHeader'),
             onTap: onTap,
             child: Row(
               children: [
@@ -203,10 +196,10 @@ class _CategoryHeader extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Padding(
-                        padding: imagePadding,
+                        padding: imagePadding ?? EdgeInsets.zero,
                         child: ExcludeSemantics(
                           child: Image.asset(
-                            imageString,
+                            imageString ?? '',
                             width: 64,
                             height: 64,
                             package: 'flutter_gallery_assets',
@@ -216,10 +209,10 @@ class _CategoryHeader extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsetsDirectional.only(start: 8),
                         child: Text(
-                          category.displayTitle(
-                            GalleryLocalizations.of(context),
-                          ),
-                          style: Theme.of(context).textTheme.headline5.apply(
+                          category!.displayTitle(
+                            GalleryLocalizations.of(context)!,
+                          )!,
+                          style: Theme.of(context).textTheme.headline5!.apply(
                                 color: colorScheme.onSurface,
                               ),
                         ),
@@ -228,7 +221,7 @@ class _CategoryHeader extends StatelessWidget {
                   ),
                 ),
                 Opacity(
-                  opacity: chevronOpacity,
+                  opacity: chevronOpacity ?? 0,
                   child: chevronOpacity != 0
                       ? Padding(
                           padding: const EdgeInsetsDirectional.only(
@@ -253,9 +246,9 @@ class _CategoryHeader extends StatelessWidget {
 
 class _ExpandedCategoryDemos extends StatelessWidget {
   const _ExpandedCategoryDemos({
-    Key key,
-    this.category,
-    this.demos,
+    Key? key,
+    required this.category,
+    required this.demos,
   }) : super(key: key);
 
   final GalleryDemoCategory category;
@@ -278,7 +271,7 @@ class _ExpandedCategoryDemos extends StatelessWidget {
 }
 
 class CategoryDemoItem extends StatelessWidget {
-  const CategoryDemoItem({Key key, this.demo}) : super(key: key);
+  const CategoryDemoItem({Key? key, required this.demo}) : super(key: key);
 
   final GalleryDemo demo;
 
@@ -316,13 +309,13 @@ class CategoryDemoItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        demo.title,
-                        style: textTheme.subtitle1
+                        demo.title!,
+                        style: textTheme.subtitle1!
                             .apply(color: colorScheme.onSurface),
                       ),
                       Text(
-                        demo.subtitle,
-                        style: textTheme.overline.apply(
+                        demo.subtitle!,
+                        style: textTheme.overline!.apply(
                           color: colorScheme.onSurface.withOpacity(0.5),
                         ),
                       ),

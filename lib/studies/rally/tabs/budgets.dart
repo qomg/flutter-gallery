@@ -11,7 +11,7 @@ import 'package:gallery/studies/rally/finance.dart';
 import 'package:gallery/studies/rally/tabs/sidebar.dart';
 
 class BudgetsView extends StatefulWidget {
-  const BudgetsView({Key key}) : super(key: key);
+  const BudgetsView({Key? key}) : super(key: key);
 
   @override
   _BudgetsViewState createState() => _BudgetsViewState();
@@ -33,7 +33,7 @@ class _BudgetsViewState extends State<BudgetsView>
     return TabWithSidebar(
       restorationId: 'budgets_view',
       mainView: FinancialEntityView(
-        heroLabel: GalleryLocalizations.of(context).rallyBudgetLeft,
+        heroLabel: GalleryLocalizations.of(context)!.rallyBudgetLeft,
         heroAmount: capTotal - usedTotal,
         segments: buildSegmentsFromBudgetItems(items),
         wholeAmount: capTotal,

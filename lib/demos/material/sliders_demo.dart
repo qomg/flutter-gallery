@@ -9,20 +9,19 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/demos/material/material_demo_types.dart';
 
 class SlidersDemo extends StatelessWidget {
-  const SlidersDemo({Key key, this.type}) : super(key: key);
+  const SlidersDemo({Key? key, required this.type}) : super(key: key);
 
   final SlidersDemoType type;
 
   String _title(BuildContext context) {
     switch (type) {
       case SlidersDemoType.sliders:
-        return GalleryLocalizations.of(context).demoSlidersTitle;
+        return GalleryLocalizations.of(context)!.demoSlidersTitle;
       case SlidersDemoType.rangeSliders:
-        return GalleryLocalizations.of(context).demoRangeSlidersTitle;
+        return GalleryLocalizations.of(context)!.demoRangeSlidersTitle;
       case SlidersDemoType.customSliders:
-        return GalleryLocalizations.of(context).demoCustomSlidersTitle;
+        return GalleryLocalizations.of(context)!.demoCustomSlidersTitle;
     }
-    return '';
   }
 
   @override
@@ -62,7 +61,7 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
   String get restorationId => 'slider_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_continuousValue, 'continuous_value');
     registerForRestoration(_discreteValue, 'discrete_value');
   }
@@ -85,8 +84,7 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
             mainAxisSize: MainAxisSize.min,
             children: [
               Semantics(
-                label: GalleryLocalizations.of(context)
-                    .demoSlidersEditableNumericalValue,
+                label: GalleryLocalizations.of(context)!.demoSlidersEditableNumericalValue,
                 child: SizedBox(
                   width: 64,
                   height: 48,
@@ -119,8 +117,7 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousWithEditableNumericalValue),
+              Text(GalleryLocalizations.of(context)!.demoSlidersContinuousWithEditableNumericalValue),
             ],
           ),
           const SizedBox(height: 80),
@@ -139,7 +136,7 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
+              Text(GalleryLocalizations.of(context)!.demoSlidersDiscrete),
             ],
           ),
         ],
@@ -167,7 +164,7 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
   String get restorationId => 'range_sliders_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_continuousStartValue, 'continuous_start_value');
     registerForRestoration(_continuousEndValue, 'continuous_end_value');
     registerForRestoration(_discreteStartValue, 'discrete_start_value');
@@ -213,7 +210,7 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersContinuous),
+              Text(GalleryLocalizations.of(context)!.demoSlidersContinuous),
             ],
           ),
           const SizedBox(height: 80),
@@ -236,7 +233,7 @@ class _RangeSlidersState extends State<_RangeSliders> with RestorationMixin {
                   });
                 },
               ),
-              Text(GalleryLocalizations.of(context).demoSlidersDiscrete),
+              Text(GalleryLocalizations.of(context)!.demoSlidersDiscrete),
             ],
           ),
         ],
@@ -302,15 +299,15 @@ class _CustomRangeThumbShape extends RangeSliderThumbShape {
   void paint(
     PaintingContext context,
     Offset center, {
-    @required Animation<double> activationAnimation,
-    @required Animation<double> enableAnimation,
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
     bool isDiscrete = false,
     bool isEnabled = false,
-    bool isOnTop,
-    TextDirection textDirection,
-    @required SliderThemeData sliderTheme,
-    Thumb thumb,
-    bool isPressed,
+    bool isOnTop = false,
+    TextDirection textDirection = TextDirection.ltr,
+    required SliderThemeData sliderTheme,
+    Thumb thumb = Thumb.start,
+    bool isPressed = false,
   }) {
     final canvas = context.canvas;
     final colorTween = ColorTween(
@@ -344,7 +341,7 @@ class _CustomRangeThumbShape extends RangeSliderThumbShape {
     }
     canvas.drawPath(
       thumbPath,
-      Paint()..color = colorTween.evaluate(enableAnimation),
+      Paint()..color = colorTween.evaluate(enableAnimation)!,
     );
   }
 }
@@ -371,16 +368,16 @@ class _CustomThumbShape extends SliderComponentShape {
   void paint(
     PaintingContext context,
     Offset thumbCenter, {
-    Animation<double> activationAnimation,
-    Animation<double> enableAnimation,
-    bool isDiscrete,
-    TextPainter labelPainter,
-    RenderBox parentBox,
-    SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    double value,
-    double textScaleFactor,
-    Size sizeWithOverflow,
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
   }) {
     final canvas = context.canvas;
     final colorTween = ColorTween(
@@ -391,7 +388,7 @@ class _CustomThumbShape extends SliderComponentShape {
     final thumbPath = _downTriangle(size, thumbCenter);
     canvas.drawPath(
       thumbPath,
-      Paint()..color = colorTween.evaluate(enableAnimation),
+      Paint()..color = colorTween.evaluate(enableAnimation)!,
     );
   }
 }
@@ -417,16 +414,16 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
   void paint(
     PaintingContext context,
     Offset thumbCenter, {
-    Animation<double> activationAnimation,
-    Animation<double> enableAnimation,
-    bool isDiscrete,
-    TextPainter labelPainter,
-    RenderBox parentBox,
-    SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    double value,
-    double textScaleFactor,
-    Size sizeWithOverflow,
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
   }) {
     final canvas = context.canvas;
     final enableColor = ColorTween(
@@ -443,7 +440,7 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
     final thumbPath = _upTriangle(size, thumbCenter + slideUpOffset);
     final paintColor = enableColor
         .evaluate(enableAnimation)
-        .withAlpha((255 * activationAnimation.value).round());
+        !.withAlpha((255 * activationAnimation.value).round());
     canvas.drawPath(
       thumbPath,
       Paint()..color = paintColor,
@@ -478,7 +475,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
   String get restorationId => 'custom_sliders_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(
         _continuousStartCustomValue, 'continuous_start_custom_value');
     registerForRestoration(
@@ -525,7 +522,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                   thumbShape: const _CustomThumbShape(),
                   valueIndicatorShape: const _CustomValueIndicatorShape(),
                   valueIndicatorTextStyle: theme.textTheme.bodyText1
-                      .copyWith(color: theme.colorScheme.onSurface),
+                      ?.copyWith(color: theme.colorScheme.onSurface),
                 ),
                 child: Slider(
                   value: _discreteCustomValue.value,
@@ -542,8 +539,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                   },
                 ),
               ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersDiscreteSliderWithCustomTheme),
+              Text(GalleryLocalizations.of(context)!.demoSlidersDiscreteSliderWithCustomTheme),
             ],
           ),
           const SizedBox(height: 80),
@@ -574,8 +570,7 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
                   },
                 ),
               ),
-              Text(GalleryLocalizations.of(context)
-                  .demoSlidersContinuousRangeSliderWithCustomTheme),
+              Text(GalleryLocalizations.of(context)!.demoSlidersContinuousRangeSliderWithCustomTheme),
             ],
           ),
         ],

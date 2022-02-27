@@ -138,7 +138,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
         // Simple line.
 
         for (final name in activeSubsegments) {
-          subsegments[name].writeln(line);
+          subsegments[name]!.writeln(line);
         }
       }
     }
@@ -171,14 +171,14 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
     if (!segments.containsKey(name)) {
       segments[name] = [];
     }
-    segments[name].add(
+    segments[name]!.add(
       TaggedString(
         text: value.toString(),
         order: order,
       ),
     );
 
-    segmentPrologues[name] = subsegmentPrologues[key];
+    segmentPrologues[name] = subsegmentPrologues[key]!;
   });
 
   segments.forEach((key, value) {
@@ -190,10 +190,10 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
   for (final name in segments.keys) {
     final buffer = StringBuffer();
 
-    buffer.write(segmentPrologues[name].trim());
+    buffer.write(segmentPrologues[name]!.trim());
     buffer.write('\n\n');
 
-    for (final ts in segments[name]) {
+    for (final ts in segments[name]!) {
       buffer.write(ts.text.trim());
       buffer.write('\n\n');
     }
@@ -209,7 +209,7 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
 /// The [order] of each subsegment is tagged with the code in order to be
 /// sorted in the desired order.
 class TaggedString {
-  TaggedString({this.text, this.order});
+  TaggedString({required this.text, required this.order});
 
   final String text;
   final double order;
@@ -220,7 +220,7 @@ void _formatSegments(Map<String, String> segments, IOSink output) {
 
   final sortedNames = segments.keys.toList()..sort();
   for (final name in sortedNames) {
-    final code = segments[name];
+    final code = segments[name]!;
 
     output.writeln('  static TextSpan $name (BuildContext context) {');
     output.writeln('    final codeStyle = CodeStyle.of(context);');
@@ -257,7 +257,7 @@ void _formatSegments(Map<String, String> segments, IOSink output) {
 ///
 /// The target file is overwritten.
 void writeSegments(
-    {String sourceDirectoryPath, String targetFilePath, bool isDryRun}) {
+    {required String sourceDirectoryPath, required String targetFilePath, required bool isDryRun}) {
   final segments = _createSegments(sourceDirectoryPath);
   final output = isDryRun ? stdout : File(targetFilePath).openWrite();
   _formatSegments(segments, output);

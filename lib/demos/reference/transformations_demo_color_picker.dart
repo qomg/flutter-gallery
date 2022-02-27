@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 @immutable
 class ColorPicker extends StatelessWidget {
   const ColorPicker({
-    Key key,
-    @required this.colors,
-    @required this.selectedColor,
+    Key? key,
+    required this.colors,
+    required this.selectedColor,
     this.onColorSelection,
   })  : assert(colors != null),
         assert(selectedColor != null),
@@ -18,7 +18,7 @@ class ColorPicker extends StatelessWidget {
 
   final Set<Color> colors;
   final Color selectedColor;
-  final ValueChanged<Color> onColorSelection;
+  final ValueChanged<Color>? onColorSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,7 @@ class ColorPicker extends StatelessWidget {
           color: color,
           selected: color == selectedColor,
           onTap: () {
-            if (onColorSelection != null) {
-              onColorSelection(color);
-            }
+            onColorSelection?.call(color);
           },
         );
       }).toList(),
@@ -43,15 +41,14 @@ class ColorPicker extends StatelessWidget {
 @immutable
 class _ColorPickerSwatch extends StatelessWidget {
   const _ColorPickerSwatch({
-    @required this.color,
-    @required this.selected,
+    required this.color,
+    required this.selected,
     this.onTap,
-  })  : assert(color != null),
-        assert(selected != null);
+  });
 
   final Color color;
   final bool selected;
-  final Function onTap;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +59,7 @@ class _ColorPickerSwatch extends StatelessWidget {
       child: RawMaterialButton(
         fillColor: color,
         onPressed: () {
-          if (onTap != null) {
-            onTap();
-          }
+          onTap?.call();
         },
         child: !selected
             ? null

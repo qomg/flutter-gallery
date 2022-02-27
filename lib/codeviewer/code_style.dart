@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class CodeStyle extends InheritedWidget {
   const CodeStyle({
-    Key key,
+    Key? key,
     this.baseStyle,
     this.numberStyle,
     this.commentStyle,
@@ -15,19 +15,19 @@ class CodeStyle extends InheritedWidget {
     this.punctuationStyle,
     this.classStyle,
     this.constantStyle,
-    @required Widget child,
+    required Widget child,
   }) : super(key: key, child: child);
 
-  final TextStyle baseStyle;
-  final TextStyle numberStyle;
-  final TextStyle commentStyle;
-  final TextStyle keywordStyle;
-  final TextStyle stringStyle;
-  final TextStyle punctuationStyle;
-  final TextStyle classStyle;
-  final TextStyle constantStyle;
+  final TextStyle? baseStyle;
+  final TextStyle? numberStyle;
+  final TextStyle? commentStyle;
+  final TextStyle? keywordStyle;
+  final TextStyle? stringStyle;
+  final TextStyle? punctuationStyle;
+  final TextStyle? classStyle;
+  final TextStyle? constantStyle;
 
-  static CodeStyle of(BuildContext context) {
+  static CodeStyle? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CodeStyle>();
   }
 

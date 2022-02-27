@@ -28,7 +28,7 @@ const double _kFlingVelocity = 2.0;
 const _kAnimationDuration = Duration(milliseconds: 300);
 
 class AdaptiveNav extends StatefulWidget {
-  const AdaptiveNav({Key key}) : super(key: key);
+  const AdaptiveNav({Key? key}) : super(key: key);
 
   @override
   _AdaptiveNavState createState() => _AdaptiveNavState();
@@ -46,7 +46,7 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
   Widget build(BuildContext context) {
     final isDesktop = isDisplayDesktop(context);
     final isTablet = isDisplaySmallDesktop(context);
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
     final _navigationDestinations = <_Destination>[
       _Destination(
         type: MailboxPageType.inbox,
@@ -122,14 +122,14 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
     emailStore.selectedMailboxPage = destination;
 
     if (isDesktop) {
-      while (desktopMailNavKey.currentState.canPop()) {
-        desktopMailNavKey.currentState.pop();
+      while (desktopMailNavKey.currentState!.canPop()) {
+        desktopMailNavKey.currentState!.pop();
       }
     }
 
     if (emailStore.onMailView) {
       if (!isDesktop) {
-        mobileMailNavKey.currentState.pop();
+        mobileMailNavKey.currentState!.pop();
       }
 
       emailStore.selectedEmailId = -1;
@@ -139,18 +139,18 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
 
 class _DesktopNav extends StatefulWidget {
   const _DesktopNav({
-    Key key,
-    this.inboxKey,
+    Key? key,
+    required this.inboxKey,
     this.currentInbox,
-    this.extended,
-    this.destinations,
-    this.folders,
-    this.onItemTapped,
+    required this.extended,
+    required this.destinations,
+    required this.folders,
+    required this.onItemTapped,
   }) : super(key: key);
 
   final bool extended;
   final UniqueKey inboxKey;
-  final String currentInbox;
+  final String? currentInbox;
   final List<_Destination> destinations;
   final Map<String, String> folders;
   final void Function(int, MailboxPageType) onItemTapped;
@@ -161,7 +161,7 @@ class _DesktopNav extends StatefulWidget {
 
 class _DesktopNavState extends State<_DesktopNav>
     with SingleTickerProviderStateMixin {
-  ValueNotifier<bool> _isExtended;
+  late ValueNotifier<bool> _isExtended;
 
   @override
   void initState() {
@@ -261,8 +261,8 @@ class _DesktopNavState extends State<_DesktopNav>
 
 class _NavigationRailHeader extends StatelessWidget {
   const _NavigationRailHeader({
-    @required this.extended,
-  }) : assert(extended != null);
+    required this.extended,
+  });
 
   final ValueNotifier<bool> extended;
 
@@ -310,7 +310,7 @@ class _NavigationRailHeader extends StatelessWidget {
                               opacity: animation.value,
                               child: Text(
                                 'REPLY',
-                                style: textTheme.bodyText1.copyWith(
+                                style: textTheme.bodyText1!.copyWith(
                                   color: ReplyColors.white50,
                                 ),
                               ),
@@ -358,8 +358,7 @@ class _NavigationRailHeader extends StatelessWidget {
 }
 
 class _NavigationRailFolderSection extends StatelessWidget {
-  const _NavigationRailFolderSection({@required this.folders})
-      : assert(folders != null);
+  const _NavigationRailFolderSection({required this.folders});
 
   final Map<String, String> folders;
 
@@ -402,9 +401,9 @@ class _NavigationRailFolderSection extends StatelessWidget {
                       ),
                       child: Text(
                         'FOLDERS',
-                        style: textTheme.caption.copyWith(
+                        style: textTheme.caption!.copyWith(
                           color: navigationRailTheme
-                              .unselectedLabelTextStyle.color,
+                              .unselectedLabelTextStyle!.color,
                         ),
                       ),
                     ),
@@ -422,18 +421,18 @@ class _NavigationRailFolderSection extends StatelessWidget {
                                 const SizedBox(width: 12),
                                 ImageIcon(
                                   AssetImage(
-                                    folders[folder],
+                                    folders[folder]!,
                                     package: _assetsPackage,
                                   ),
                                   color: navigationRailTheme
-                                      .unselectedLabelTextStyle.color,
+                                      .unselectedLabelTextStyle!.color,
                                 ),
                                 const SizedBox(width: 24),
                                 Text(
                                   folder,
-                                  style: textTheme.bodyText1.copyWith(
+                                  style: textTheme.bodyText1!.copyWith(
                                     color: navigationRailTheme
-                                        .unselectedLabelTextStyle.color,
+                                        .unselectedLabelTextStyle!.color,
                                   ),
                                 ),
                                 const SizedBox(height: 72),
@@ -455,10 +454,10 @@ class _NavigationRailFolderSection extends StatelessWidget {
 
 class _MobileNav extends StatefulWidget {
   const _MobileNav({
-    this.inboxKey,
-    this.destinations,
-    this.folders,
-    this.onItemTapped,
+    required this.inboxKey,
+    required this.destinations,
+    required this.folders,
+    required this.onItemTapped,
   });
 
   final UniqueKey inboxKey;
@@ -472,12 +471,12 @@ class _MobileNav extends StatefulWidget {
 
 class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
   final _bottomDrawerKey = GlobalKey(debugLabel: 'Bottom Drawer');
-  AnimationController _drawerController;
-  AnimationController _dropArrowController;
-  AnimationController _bottomAppBarController;
-  Animation<double> _drawerCurve;
-  Animation<double> _dropArrowCurve;
-  Animation<double> _bottomAppBarCurve;
+  late AnimationController _drawerController;
+  late AnimationController _dropArrowController;
+  late AnimationController _bottomAppBarController;
+  late Animation<double> _drawerCurve;
+  late Animation<double> _dropArrowCurve;
+  late Animation<double> _bottomAppBarCurve;
 
   @override
   void initState() {
@@ -555,12 +554,12 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
 
   double get _bottomDrawerHeight {
     final renderBox =
-        _bottomDrawerKey.currentContext.findRenderObject() as RenderBox;
+        _bottomDrawerKey.currentContext?.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-    _drawerController.value -= details.primaryDelta / _bottomDrawerHeight;
+    _drawerController.value -= details.primaryDelta! / _bottomDrawerHeight;
   }
 
   void _handleDragEnd(DragEndDetails details) {
@@ -716,14 +715,14 @@ class _MobileNavState extends State<_MobileNav> with TickerProviderStateMixin {
 
 class _AnimatedBottomAppBar extends StatelessWidget {
   const _AnimatedBottomAppBar({
-    this.bottomAppBarController,
-    this.bottomAppBarCurve,
-    this.bottomDrawerVisible,
-    this.drawerController,
-    this.dropArrowCurve,
-    this.navigationDestinations,
-    this.selectedMailbox,
-    this.toggleBottomDrawerVisibility,
+    required this.bottomAppBarController,
+    required this.bottomAppBarCurve,
+    required this.bottomDrawerVisible,
+    required this.drawerController,
+    required this.dropArrowCurve,
+    required this.navigationDestinations,
+    required this.selectedMailbox,
+    required this.toggleBottomDrawerVisibility,
   });
 
   final AnimationController bottomAppBarController;
@@ -795,7 +794,7 @@ class _AnimatedBottomAppBar extends StatelessWidget {
                                       }).textLabel,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1
+                                          .bodyText1!
                                           .copyWith(color: ReplyColors.white50),
                                     ),
                                   ),
@@ -823,8 +822,7 @@ class _AnimatedBottomAppBar extends StatelessWidget {
 }
 
 class _BottomAppBarActionItems extends StatelessWidget {
-  const _BottomAppBarActionItems({@required this.drawerVisible})
-      : assert(drawerVisible != null);
+  const _BottomAppBarActionItems({required this.drawerVisible});
 
   final bool drawerVisible;
 
@@ -833,7 +831,7 @@ class _BottomAppBarActionItems extends StatelessWidget {
     return Consumer<EmailStore>(
       builder: (context, model, child) {
         final onMailView = model.onMailView;
-        Color starIconColor;
+        Color? starIconColor;
 
         if (onMailView) {
           starIconColor = model.isCurrentEmailStarred
@@ -876,7 +874,7 @@ class _BottomAppBarActionItems extends StatelessWidget {
                             }
                             if (model.selectedMailboxPage ==
                                 MailboxPageType.starred) {
-                              mobileMailNavKey.currentState.pop();
+                              mobileMailNavKey.currentState?.pop();
                               model.selectedEmailId = -1;
                             }
                           },
@@ -894,7 +892,7 @@ class _BottomAppBarActionItems extends StatelessWidget {
                               model.selectedEmailId,
                             );
 
-                            mobileMailNavKey.currentState.pop();
+                            mobileMailNavKey.currentState?.pop();
                             model.selectedEmailId = -1;
                           },
                           color: ReplyColors.white50,
@@ -928,16 +926,12 @@ class _BottomAppBarActionItems extends StatelessWidget {
 
 class _BottomDrawerDestinations extends StatelessWidget {
   const _BottomDrawerDestinations({
-    @required this.destinations,
-    @required this.drawerController,
-    @required this.dropArrowController,
-    @required this.selectedMailbox,
-    @required this.onItemTapped,
-  })  : assert(destinations != null),
-        assert(drawerController != null),
-        assert(dropArrowController != null),
-        assert(selectedMailbox != null),
-        assert(onItemTapped != null);
+    required this.destinations,
+    required this.drawerController,
+    required this.dropArrowController,
+    required this.selectedMailbox,
+    required this.onItemTapped,
+  })  : assert(drawerController != null);
 
   final List<_Destination> destinations;
   final AnimationController drawerController;
@@ -961,7 +955,7 @@ class _BottomDrawerDestinations extends StatelessWidget {
             Future.delayed(
               Duration(
                 milliseconds: (drawerController.value == 1 ? 300 : 120) *
-                    GalleryOptions.of(context).timeDilation.toInt(),
+                    GalleryOptions.of(context)!.timeDilation!.toInt(),
               ),
               () {
                 // Wait until animations are complete to reload the state.
@@ -979,14 +973,14 @@ class _BottomDrawerDestinations extends StatelessWidget {
               ),
               color: destination.type == selectedMailbox
                   ? theme.colorScheme.secondary
-                  : theme.navigationRailTheme.unselectedLabelTextStyle.color,
+                  : theme.navigationRailTheme.unselectedLabelTextStyle!.color,
             ),
             title: Text(
               destination.textLabel,
-              style: theme.textTheme.bodyText2.copyWith(
+              style: theme.textTheme.bodyText2!.copyWith(
                 color: destination.type == selectedMailbox
                     ? theme.colorScheme.secondary
-                    : theme.navigationRailTheme.unselectedLabelTextStyle.color,
+                    : theme.navigationRailTheme.unselectedLabelTextStyle!.color,
               ),
             ),
           ),
@@ -1002,12 +996,10 @@ class _BottomDrawerDestinations extends StatelessWidget {
 
 class _Destination {
   const _Destination({
-    @required this.type,
-    @required this.textLabel,
-    @required this.icon,
-  })  : assert(type != null),
-        assert(textLabel != null),
-        assert(icon != null);
+    required this.type,
+    required this.textLabel,
+    required this.icon,
+  })  : assert(textLabel != null);
 
   // Which mailbox page to display. For example, 'Starred' or 'Trash'.
   final MailboxPageType type;
@@ -1018,8 +1010,7 @@ class _Destination {
 }
 
 class _BottomDrawerFolderSection extends StatelessWidget {
-  const _BottomDrawerFolderSection({@required this.folders})
-      : assert(folders != null);
+  const _BottomDrawerFolderSection({required this.folders});
 
   final Map<String, String> folders;
 
@@ -1037,15 +1028,15 @@ class _BottomDrawerFolderSection extends StatelessWidget {
               mouseCursor: SystemMouseCursors.click,
               leading: ImageIcon(
                 AssetImage(
-                  folders[folder],
+                  folders[folder]!,
                   package: _assetsPackage,
                 ),
-                color: navigationRailTheme.unselectedLabelTextStyle.color,
+                color: navigationRailTheme.unselectedLabelTextStyle!.color,
               ),
               title: Text(
                 folder,
-                style: theme.textTheme.bodyText2.copyWith(
-                  color: navigationRailTheme.unselectedLabelTextStyle.color,
+                style: theme.textTheme.bodyText2!.copyWith(
+                  color: navigationRailTheme.unselectedLabelTextStyle!.color,
                 ),
               ),
             ),
@@ -1056,7 +1047,7 @@ class _BottomDrawerFolderSection extends StatelessWidget {
 }
 
 class _MailNavigator extends StatefulWidget {
-  const _MailNavigator({@required this.child}) : assert(child != null);
+  const _MailNavigator({required this.child});
 
   final Widget child;
 
@@ -1099,7 +1090,7 @@ class _MailNavigatorState extends State<_MailNavigator> {
 }
 
 class _ReplyLogo extends StatelessWidget {
-  const _ReplyLogo({Key key}) : super(key: key);
+  const _ReplyLogo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1140,12 +1131,12 @@ class _ReplyFabState extends State<_ReplyFab>
     // ComposePage and we are not on the SearchPage, then we can push
     // a ComposePage onto our navigator. We return true at the end
     // so nothing is popped.
-    desktopMailNavKey.currentState.popUntil(
+    desktopMailNavKey.currentState?.popUntil(
       (route) {
         var currentRoute = route.settings.name;
         if (currentRoute != ReplyApp.composeRoute && !onSearchPage) {
           desktopMailNavKey.currentState
-              .restorablePushNamed(ReplyApp.composeRoute);
+              ?.restorablePushNamed(ReplyApp.composeRoute);
         }
         return true;
       },
@@ -1181,7 +1172,7 @@ class _ReplyFabState extends State<_ReplyFab>
           return Container(
             height: 56,
             padding: EdgeInsets.symmetric(
-              vertical: ui.lerpDouble(0, 6, animation.value),
+              vertical: ui.lerpDouble(0, 6, animation.value) ?? 0,
             ),
             child: animation.value == 0
                 ? FloatingActionButton(
@@ -1205,7 +1196,7 @@ class _ReplyFabState extends State<_ReplyFab>
                               tooltip.toUpperCase(),
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5
+                                  .headline5!
                                   .copyWith(
                                     fontSize: 16,
                                     color: theme.colorScheme.onSecondary,
@@ -1256,10 +1247,9 @@ class _ReplyFabState extends State<_ReplyFab>
 
 class _FadeThroughTransitionSwitcher extends StatelessWidget {
   const _FadeThroughTransitionSwitcher({
-    @required this.fillColor,
-    @required this.child,
-  })  : assert(fillColor != null),
-        assert(child != null);
+    required this.fillColor,
+    required this.child,
+  })  : assert(fillColor != null);
 
   final Widget child;
   final Color fillColor;
@@ -1282,8 +1272,8 @@ class _FadeThroughTransitionSwitcher extends StatelessWidget {
 
 class _SharedAxisTransitionSwitcher extends StatelessWidget {
   const _SharedAxisTransitionSwitcher({
-    @required this.defaultChild,
-  }) : assert(defaultChild != null);
+    required this.defaultChild,
+  });
 
   final Widget defaultChild;
 

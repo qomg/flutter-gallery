@@ -55,9 +55,9 @@ Future<void> englishArbsToXmls({bool isDryRun = false}) async {
 
 @visibleForTesting
 Future<void> generateXmlFromArb({
-  File inputArb,
-  IOSink outputXml,
-  String xmlHeader,
+  required File inputArb,
+  required IOSink outputXml,
+  required String xmlHeader,
 }) async {
   final bundle =
       jsonDecode(await inputArb.readAsString()) as Map<String, dynamic>;

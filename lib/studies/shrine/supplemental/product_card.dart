@@ -13,14 +13,14 @@ import 'package:scoped_model/scoped_model.dart';
 
 class MobileProductCard extends StatelessWidget {
   const MobileProductCard({
-    Key key,
+    Key? key,
     this.imageAspectRatio = 33 / 49,
     this.product,
-  })  : assert(imageAspectRatio == null || imageAspectRatio > 0),
+  })  : assert(imageAspectRatio > 0),
         super(key: key);
 
   final double imageAspectRatio;
-  final Product product;
+  final Product? product;
 
   static const double defaultTextBoxHeight = 65;
 
@@ -41,7 +41,7 @@ class MobileProductCard extends StatelessWidget {
 
 class DesktopProductCard extends StatelessWidget {
   const DesktopProductCard(
-      {Key key, @required this.product, @required this.imageWidth})
+      {Key? key, required this.product, required this.imageWidth})
       : super(key: key);
 
   final Product product;
@@ -58,10 +58,10 @@ class DesktopProductCard extends StatelessWidget {
 }
 
 Widget _buildProductCard({
-  BuildContext context,
-  Product product,
-  double imageWidth,
-  double imageAspectRatio,
+  required BuildContext context,
+  Product? product,
+  double? imageWidth,
+  double? imageAspectRatio,
 }) {
   final isDesktop = isDisplayDesktop(context);
   final formatter = NumberFormat.simpleCurrency(
@@ -70,11 +70,11 @@ Widget _buildProductCard({
   );
   final theme = Theme.of(context);
   final imageWidget = FadeInImagePlaceholder(
-    image: AssetImage(product.assetName, package: product.assetPackage),
+    image: AssetImage(product?.assetName ?? '', package: product?.assetPackage ?? ''),
     placeholder: Container(
       color: Colors.black.withOpacity(0.1),
       width: imageWidth,
-      height: imageWidth == null ? null : imageWidth / product.assetAspectRatio,
+      height: imageWidth == null ? null : imageWidth / (product?.assetAspectRatio ?? 1),
     ),
     fit: BoxFit.cover,
     width: isDesktop ? imageWidth : null,
@@ -86,12 +86,12 @@ Widget _buildProductCard({
     builder: (context, child, model) {
       return Semantics(
         hint:
-            GalleryLocalizations.of(context).shrineScreenReaderProductAddToCart,
+            GalleryLocalizations.of(context)!.shrineScreenReaderProductAddToCart,
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
             onTap: () {
-              model.addProductToCart(product.id);
+              model.addProductToCart(product?.id ?? 0);
             },
             child: child,
           ),
@@ -107,7 +107,7 @@ Widget _buildProductCard({
             isDesktop
                 ? imageWidget
                 : AspectRatio(
-                    aspectRatio: imageAspectRatio,
+                    aspectRatio: imageAspectRatio ?? 1,
                     child: imageWidget,
                   ),
             SizedBox(

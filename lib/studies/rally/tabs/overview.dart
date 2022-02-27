@@ -18,7 +18,7 @@ import 'package:gallery/studies/rally/formatters.dart';
 
 /// A page that shows a status overview.
 class OverviewView extends StatefulWidget {
-  const OverviewView({Key key}) : super(key: key);
+  const OverviewView({Key? key}) : super(key: key);
 
   @override
   _OverviewViewState createState() => _OverviewViewState();
@@ -81,7 +81,7 @@ class _OverviewViewState extends State<OverviewView> {
 }
 
 class _OverviewGrid extends StatelessWidget {
-  const _OverviewGrid({Key key, @required this.spacing}) : super(key: key);
+  const _OverviewGrid({Key? key, required this.spacing}) : super(key: key);
 
   final double spacing;
 
@@ -93,7 +93,7 @@ class _OverviewGrid extends StatelessWidget {
 
     return LayoutBuilder(builder: (context, constraints) {
       final textScaleFactor =
-          GalleryOptions.of(context).textScaleFactor(context);
+          GalleryOptions.of(context)!.textScaleFactor(context);
 
       // Only display multiple columns when the constraints allow it and we
       // have a regular text scale factor.
@@ -111,12 +111,12 @@ class _OverviewGrid extends StatelessWidget {
           SizedBox(
             width: boxWidth,
             child: _FinancialView(
-              title: GalleryLocalizations.of(context).rallyAccounts,
+              title: GalleryLocalizations.of(context)!.rallyAccounts,
               total: sumAccountDataPrimaryAmount(accountDataList),
               financialItemViews:
                   buildAccountDataListViews(accountDataList, context),
               buttonSemanticsLabel:
-                  GalleryLocalizations.of(context).rallySeeAllAccounts,
+                  GalleryLocalizations.of(context)!.rallySeeAllAccounts,
               order: 1,
             ),
           ),
@@ -124,21 +124,21 @@ class _OverviewGrid extends StatelessWidget {
           SizedBox(
             width: boxWidth,
             child: _FinancialView(
-              title: GalleryLocalizations.of(context).rallyBills,
+              title: GalleryLocalizations.of(context)!.rallyBills,
               total: sumBillDataPrimaryAmount(billDataList),
               financialItemViews: buildBillDataListViews(billDataList, context),
               buttonSemanticsLabel:
-                  GalleryLocalizations.of(context).rallySeeAllBills,
+                  GalleryLocalizations.of(context)!.rallySeeAllBills,
               order: 2,
             ),
           ),
           _FinancialView(
-            title: GalleryLocalizations.of(context).rallyBudgets,
+            title: GalleryLocalizations.of(context)!.rallyBudgets,
             total: sumBudgetDataPrimaryAmount(budgetDataList),
             financialItemViews:
                 buildBudgetDataListViews(budgetDataList, context),
             buttonSemanticsLabel:
-                GalleryLocalizations.of(context).rallySeeAllBudgets,
+                GalleryLocalizations.of(context)!.rallySeeAllBudgets,
             order: 3,
           ),
         ],
@@ -148,7 +148,7 @@ class _OverviewGrid extends StatelessWidget {
 }
 
 class _AlertsView extends StatelessWidget {
-  const _AlertsView({Key key, this.alerts}) : super(key: key);
+  const _AlertsView({Key? key, required this.alerts}) : super(key: key);
 
   final List<AlertData> alerts;
 
@@ -170,12 +170,12 @@ class _AlertsView extends StatelessWidget {
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Text(GalleryLocalizations.of(context).rallyAlerts),
+                  Text(GalleryLocalizations.of(context)!.rallyAlerts),
                   if (!isDesktop)
                     TextButton(
                       style: TextButton.styleFrom(primary: Colors.white),
                       onPressed: () {},
-                      child: Text(GalleryLocalizations.of(context).rallySeeAll),
+                      child: Text(GalleryLocalizations.of(context)!.rallySeeAll),
                     ),
                 ],
               ),
@@ -193,8 +193,8 @@ class _AlertsView extends StatelessWidget {
 
 class _Alert extends StatelessWidget {
   const _Alert({
-    Key key,
-    @required this.alert,
+    Key? key,
+    required this.alert,
   }) : super(key: key);
 
   final AlertData alert;
@@ -231,11 +231,11 @@ class _Alert extends StatelessWidget {
 
 class _FinancialView extends StatelessWidget {
   const _FinancialView({
-    this.title,
-    this.total,
-    this.financialItemViews,
-    this.buttonSemanticsLabel,
-    this.order,
+    required this.title,
+    required this.total,
+    required this.financialItemViews,
+    required this.buttonSemanticsLabel,
+    required this.order,
   });
 
   final String title;
@@ -270,7 +270,7 @@ class _FinancialView extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     child: SelectableText(
                       usdWithSignFormat(context).format(total),
-                      style: theme.textTheme.bodyText1.copyWith(
+                      style: theme.textTheme.bodyText1!.copyWith(
                         fontSize: 44 / reducedTextScale(context),
                         fontWeight: FontWeight.w600,
                       ),
@@ -285,7 +285,7 @@ class _FinancialView extends StatelessWidget {
               style: TextButton.styleFrom(primary: Colors.white),
               onPressed: () {},
               child: Text(
-                GalleryLocalizations.of(context).rallySeeAll,
+                GalleryLocalizations.of(context)!.rallySeeAll,
                 semanticsLabel: buttonSemanticsLabel,
               ),
             ),

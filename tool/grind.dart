@@ -12,7 +12,7 @@ import 'package:path/path.dart' as path;
 void main(List<String> args) => grind(args);
 
 @Task('Get packages')
-Future<void> pubGet({String directory}) async {
+Future<void> pubGet({String? directory}) async {
   await _runProcess(
     'flutter',
     ['pub', 'get', if (directory != null) directory],
@@ -104,7 +104,7 @@ Future<void> _runProcess(String executable, List<String> arguments) async {
 // Function to make sure we capture all of the stdout.
 // Reference: https://github.com/dart-lang/sdk/issues/31666
 Future<String> _startProcess(String executable,
-    {List<String> arguments = const [], String input}) async {
+    {List<String> arguments = const [], String? input}) async {
   final output = <int>[];
   final completer = Completer<int>();
   final process = await Process.start(executable, arguments);

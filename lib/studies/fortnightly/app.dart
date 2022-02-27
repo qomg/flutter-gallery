@@ -15,7 +15,7 @@ import 'package:gallery/studies/fortnightly/shared.dart';
 const _fortnightlyTitle = 'Fortnightly';
 
 class FortnightlyApp extends StatelessWidget {
-  const FortnightlyApp({Key key}) : super(key: key);
+  const FortnightlyApp({Key? key}) : super(key: key);
 
   static const String defaultRoute = routes.defaultRoute;
 
@@ -29,7 +29,7 @@ class FortnightlyApp extends StatelessWidget {
       title: _fortnightlyTitle,
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context).copyWith(
-        platform: GalleryOptions.of(context).platform,
+        platform: GalleryOptions.of(context)!.platform,
       ),
       home: ApplyTextOptions(child: home),
       routes: {
@@ -39,7 +39,7 @@ class FortnightlyApp extends StatelessWidget {
       // L10n settings.
       localizationsDelegates: GalleryLocalizations.localizationsDelegates,
       supportedLocales: GalleryLocalizations.supportedLocales,
-      locale: GalleryOptions.of(context).locale,
+      locale: GalleryOptions.of(context)!.locale,
     );
   }
 }
@@ -71,7 +71,7 @@ class _FortnightlyHomeMobile extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            tooltip: GalleryLocalizations.of(context).shrineTooltipSearch,
+            tooltip: GalleryLocalizations.of(context)!.shrineTooltipSearch,
             onPressed: () {},
           ),
         ],
@@ -136,8 +136,7 @@ class _FortnightlyHomeDesktop extends StatelessWidget {
                       alignment: AlignmentDirectional.centerEnd,
                       child: IconButton(
                         icon: const Icon(Icons.search),
-                        tooltip: GalleryLocalizations.of(context)
-                            .shrineTooltipSearch,
+                        tooltip: GalleryLocalizations.of(context)!.shrineTooltipSearch,
                         onPressed: () {},
                       ),
                     ),

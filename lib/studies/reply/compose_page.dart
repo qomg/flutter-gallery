@@ -3,7 +3,7 @@ import 'package:gallery/studies/reply/model/email_store.dart';
 import 'package:provider/provider.dart';
 
 class ComposePage extends StatelessWidget {
-  const ComposePage({Key key}) : super(key: key);
+  const ComposePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class ComposePage extends StatelessWidget {
 }
 
 class _SubjectRow extends StatefulWidget {
-  const _SubjectRow({@required this.subject}) : assert(subject != null);
+  const _SubjectRow({required this.subject}) : assert(subject != null);
 
   final String subject;
   @override
@@ -77,7 +77,7 @@ class _SubjectRow extends StatefulWidget {
 }
 
 class _SubjectRowState extends State<_SubjectRow> {
-  TextEditingController _subjectController;
+  late TextEditingController _subjectController;
 
   @override
   void initState() {
@@ -117,7 +117,7 @@ class _SubjectRowState extends State<_SubjectRow> {
               style: theme.textTheme.headline6,
               decoration: InputDecoration.collapsed(
                 hintText: 'Subject',
-                hintStyle: theme.textTheme.headline6.copyWith(
+                hintStyle: theme.textTheme.headline6!.copyWith(
                   color: theme.colorScheme.primary.withOpacity(0.5),
                 ),
               ),
@@ -143,7 +143,7 @@ class _SubjectRowState extends State<_SubjectRow> {
 }
 
 class _SenderAddressRow extends StatefulWidget {
-  const _SenderAddressRow({@required this.senderEmail})
+  const _SenderAddressRow({required this.senderEmail})
       : assert(senderEmail != null);
 
   final String senderEmail;
@@ -153,7 +153,7 @@ class _SenderAddressRow extends StatefulWidget {
 }
 
 class __SenderAddressRowState extends State<_SenderAddressRow> {
-  String senderEmail;
+  late String senderEmail;
 
   @override
   void initState() {
@@ -222,8 +222,8 @@ class __SenderAddressRowState extends State<_SenderAddressRow> {
 
 class _RecipientsRow extends StatelessWidget {
   const _RecipientsRow({
-    @required this.recipients,
-    @required this.avatar,
+    required this.recipients,
+    required this.avatar,
   })  : assert(recipients != null),
         assert(avatar != null);
 

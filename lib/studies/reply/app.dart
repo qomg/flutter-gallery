@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 final rootNavKey = GlobalKey<NavigatorState>();
 
 class ReplyApp extends StatefulWidget {
-  const ReplyApp({Key key}) : super(key: key);
+  const ReplyApp({Key? key}) : super(key: key);
 
   static const String homeRoute = routes.homeRoute;
   static const String composeRoute = routes.composeRoute;
@@ -47,7 +47,7 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
   String get restorationId => 'replyState';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(_appState, 'state');
   }
 
@@ -59,7 +59,7 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
 
   @override
   Widget build(BuildContext context) {
-    final galleryThemeMode = GalleryOptions.of(context).themeMode;
+    final galleryThemeMode = GalleryOptions.of(context)!.themeMode;
     final isDark = galleryThemeMode == ThemeMode.system
         ? Theme.of(context).brightness == Brightness.dark
         : galleryThemeMode == ThemeMode.dark;
@@ -81,7 +81,7 @@ class _ReplyAppState extends State<ReplyApp> with RestorationMixin {
         theme: replyTheme,
         localizationsDelegates: GalleryLocalizations.localizationsDelegates,
         supportedLocales: GalleryLocalizations.supportedLocales,
-        locale: GalleryOptions.of(context).locale,
+        locale: GalleryOptions.of(context)!.locale,
         initialRoute: ReplyApp.homeRoute,
         onGenerateRoute: (settings) {
           switch (settings.name) {
@@ -109,7 +109,7 @@ class _RestorableEmailState extends RestorableListenable<EmailStore> {
   }
 
   @override
-  EmailStore fromPrimitives(Object data) {
+  EmailStore fromPrimitives(Object? data) {
     final appState = EmailStore();
     final appData = Map<String, dynamic>.from(data as Map);
     appState.selectedEmailId = appData['selectedEmailId'] as int;
@@ -156,12 +156,12 @@ ThemeData _buildReplyLightTheme(BuildContext context) {
       backgroundColor: ReplyColors.blue700,
       selectedIconTheme: const IconThemeData(color: ReplyColors.orange500),
       selectedLabelTextStyle:
-          GoogleFonts.workSansTextTheme().headline5.copyWith(
+          GoogleFonts.workSansTextTheme().headline5!.copyWith(
                 color: ReplyColors.orange500,
               ),
       unselectedIconTheme: const IconThemeData(color: ReplyColors.blue200),
       unselectedLabelTextStyle:
-          GoogleFonts.workSansTextTheme().headline5.copyWith(
+          GoogleFonts.workSansTextTheme().headline5!.copyWith(
                 color: ReplyColors.blue200,
               ),
     ),
@@ -203,12 +203,12 @@ ThemeData _buildReplyDarkTheme(BuildContext context) {
       backgroundColor: ReplyColors.darkBottomAppBarBackground,
       selectedIconTheme: const IconThemeData(color: ReplyColors.orange300),
       selectedLabelTextStyle:
-          GoogleFonts.workSansTextTheme().headline5.copyWith(
+          GoogleFonts.workSansTextTheme().headline5!.copyWith(
                 color: ReplyColors.orange300,
               ),
       unselectedIconTheme: const IconThemeData(color: ReplyColors.greyLabel),
       unselectedLabelTextStyle:
-          GoogleFonts.workSansTextTheme().headline5.copyWith(
+          GoogleFonts.workSansTextTheme().headline5!.copyWith(
                 color: ReplyColors.greyLabel,
               ),
     ),
@@ -250,7 +250,7 @@ ChipThemeData _buildChipTheme(
     secondarySelectedColor: chipBackground,
     padding: const EdgeInsets.all(4),
     shape: const StadiumBorder(),
-    labelStyle: GoogleFonts.workSansTextTheme().bodyText2.copyWith(
+    labelStyle: GoogleFonts.workSansTextTheme().bodyText2!.copyWith(
           color: brightness == Brightness.dark
               ? ReplyColors.white50
               : ReplyColors.black900,

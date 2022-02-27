@@ -42,7 +42,7 @@ const String _loremIpsumParagraph =
 const double _fabDimension = 56;
 
 class OpenContainerTransformDemo extends StatefulWidget {
-  const OpenContainerTransformDemo({Key key}) : super(key: key);
+  const OpenContainerTransformDemo({Key? key}) : super(key: key);
 
   @override
   _OpenContainerTransformDemoState createState() =>
@@ -55,7 +55,7 @@ class _OpenContainerTransformDemoState
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
 
   void _showSettingsBottomModalSheet(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
 
     showModalBottomSheet<void>(
       context: context,
@@ -116,7 +116,7 @@ class _OpenContainerTransformDemoState
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Navigator(
@@ -138,7 +138,7 @@ class _OpenContainerTransformDemoState
                     '(${localizations.demoContainerTransformDemoInstructions})',
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle2
+                        .subtitle2!
                         .copyWith(color: Colors.white),
                   ),
                 ],
@@ -317,8 +317,8 @@ class _OpenContainerTransformDemoState
 
 class _OpenContainerWrapper extends StatelessWidget {
   const _OpenContainerWrapper({
-    this.closedBuilder,
-    this.transitionType,
+    required this.closedBuilder,
+    required this.transitionType,
   });
 
   final CloseContainerBuilder closedBuilder;
@@ -336,13 +336,13 @@ class _OpenContainerWrapper extends StatelessWidget {
 }
 
 class _DetailsCard extends StatelessWidget {
-  const _DetailsCard({this.openContainer});
+  const _DetailsCard({required this.openContainer});
 
   final VoidCallback openContainer;
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
 
     return _InkWellOverlay(
       openContainer: openContainer,
@@ -379,7 +379,7 @@ class _DetailsCard extends StatelessWidget {
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur '
               'adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     color: Colors.black54,
                     inherit: false,
                   ),
@@ -393,8 +393,8 @@ class _DetailsCard extends StatelessWidget {
 
 class _SmallDetailsCard extends StatelessWidget {
   const _SmallDetailsCard({
-    this.openContainer,
-    this.subtitle,
+    required this.openContainer,
+    required this.subtitle,
   });
 
   final VoidCallback openContainer;
@@ -429,7 +429,7 @@ class _SmallDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
+                    GalleryLocalizations.of(context)!.demoMotionPlaceholderTitle,
                     style: textTheme.headline6,
                   ),
                   const SizedBox(
@@ -450,7 +450,7 @@ class _SmallDetailsCard extends StatelessWidget {
 }
 
 class _DetailsListTile extends StatelessWidget {
-  const _DetailsListTile({this.openContainer});
+  const _DetailsListTile({required this.openContainer});
 
   final VoidCallback openContainer;
 
@@ -483,7 +483,7 @@ class _DetailsListTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    GalleryLocalizations.of(context).demoMotionPlaceholderTitle,
+                    GalleryLocalizations.of(context)!.demoMotionPlaceholderTitle,
                     style: textTheme.subtitle1,
                   ),
                   const SizedBox(
@@ -512,10 +512,10 @@ class _InkWellOverlay extends StatelessWidget {
     this.child,
   });
 
-  final VoidCallback openContainer;
-  final double width;
-  final double height;
-  final Widget child;
+  final VoidCallback? openContainer;
+  final double? width;
+  final double? height;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -535,7 +535,7 @@ class _DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = GalleryLocalizations.of(context);
+    final localizations = GalleryLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -564,7 +564,7 @@ class _DetailsPage extends StatelessWidget {
               children: [
                 Text(
                   localizations.demoMotionPlaceholderTitle,
-                  style: textTheme.headline5.copyWith(
+                  style: textTheme.headline5!.copyWith(
                     color: Colors.black54,
                     fontSize: 30,
                   ),
@@ -574,7 +574,7 @@ class _DetailsPage extends StatelessWidget {
                 ),
                 Text(
                   _loremIpsumParagraph,
-                  style: textTheme.bodyText2.copyWith(
+                  style: textTheme.bodyText2!.copyWith(
                     color: Colors.black54,
                     height: 1.5,
                     fontSize: 16,
