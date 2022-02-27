@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -267,7 +269,7 @@ class _GalleryHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Header(
-      color: Theme.of(context).colorScheme.primaryVariant,
+      color: Theme.of(context).colorScheme.primaryContainer,
       text: GalleryLocalizations.of(context)!.homeHeaderGallery,
     );
   }

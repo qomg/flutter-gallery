@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'package:flutter/material.dart';
 import 'package:gallery/themes/gallery_theme_data.dart';
 import 'transformations_demo_board.dart';
@@ -26,7 +28,7 @@ class EditBoardPoint extends StatelessWidget {
     final boardPointColors = <Color>{
       Colors.white,
       GalleryThemeData.darkColorScheme.primary,
-      GalleryThemeData.darkColorScheme.primaryVariant,
+      GalleryThemeData.darkColorScheme.primaryContainer,
       GalleryThemeData.darkColorScheme.secondary,
       backgroundColor,
     };

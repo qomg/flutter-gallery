@@ -29,7 +29,7 @@ class DeferredWidget extends StatefulWidget {
         _loadedModules.add(loader);
       });
     }
-    return _moduleLoaders[loader];
+    return _moduleLoaders[loader]!;
   }
 
   @override

@@ -1,3 +1,5 @@
+
+
 import 'dart:convert' show JsonEncoder;
 import 'dart:io';
 
@@ -25,9 +27,6 @@ Future<void> main() async {
   test('Can run a web benchmark', () async {
     stdout.writeln('Starting web benchmark tests ...');
 
-    // TODO: re-enable this test (https://github.com/flutter/gallery/issues/463)
-    return;
-    // ignore: dead_code
     final taskResult = await serveWebBenchmark(
       benchmarkAppDirectory: projectRootDirectory(),
       entryPoint: 'test_benchmarks/benchmarks/client.dart',

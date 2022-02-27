@@ -2,9 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'dart:collection';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show describeEnum;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations_en.dart'
@@ -46,8 +47,6 @@ enum GalleryDemoCategory {
 }
 
 extension GalleryDemoExtension on GalleryDemoCategory {
-  String get name => describeEnum(this);
-
   String? displayTitle(GalleryLocalizations localizations) {
     switch (this) {
       case GalleryDemoCategory.material:
@@ -1361,7 +1360,10 @@ Map<String, GalleryDemo> slugToDemo(BuildContext context) {
   final localizations = GalleryLocalizations.of(context)!;
   return LinkedHashMap<String, GalleryDemo>.fromIterable(
     allGalleryDemos(localizations),
-    key: (dynamic demo) => demo.slug as String,
+    key: (dynamic demo) {
+      assert(demo is GalleryDemo);
+      return (demo.slug ?? demo.studyId) as String;
+    },
   );
 }
 

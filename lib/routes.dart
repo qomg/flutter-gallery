@@ -1,3 +1,9 @@
+// Copyright 2019 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery/app.dart' show RootPage;
@@ -108,17 +114,15 @@ class RouteConfiguration {
       final regExpPattern = RegExp(path.pattern);
       if (regExpPattern.hasMatch(name)) {
         final firstMatch = regExpPattern.firstMatch(name);
-        if (firstMatch == null) continue;
-        final match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
-        if (match == null) continue;
+        final match = (firstMatch?.groupCount == 1) ? firstMatch?.group(1) : null;
         if (kIsWeb) {
           return NoAnimationMaterialPageRoute<void>(
-            builder: (context) => path.builder(context, match),
+            builder: (context) => path.builder(context, match ?? '/'),
             settings: settings,
           );
         }
         return MaterialPageRoute<void>(
-          builder: (context) => path.builder(context, match),
+          builder: (context) => path.builder(context, match ?? '/'),
           settings: settings,
         );
       }

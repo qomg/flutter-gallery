@@ -369,10 +369,10 @@ class _FeatureDiscoveryState extends State<FeatureDiscovery>
   @override
   void dispose() {
     overlay?.remove();
-    openController?.dispose();
-    rippleController?.dispose();
-    tapController?.dispose();
-    dismissController?.dispose();
+    openController.dispose();
+    rippleController.dispose();
+    tapController.dispose();
+    dismissController.dispose();
     super.dispose();
   }
 }

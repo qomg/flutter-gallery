@@ -9,8 +9,6 @@ import 'app.dart';
 import 'preset.dart';
 import 'ume.dart';
 
-export 'data/demos.dart' show pumpDeferredLibraries;
-
 enum Mode {
   normal,
   ume,
@@ -18,7 +16,7 @@ enum Mode {
   compat,
 }
 
-const mode = Mode.dokit;
+const mode = Mode.ume;
 
 void main() {
   startUp();

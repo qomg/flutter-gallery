@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'dart:collection';
 
 import 'package:collection/collection.dart';
@@ -93,6 +95,8 @@ class _SettingsPageState extends State<SettingsPage> {
           ? DisplayOption(localeNativeName, subtitle: localeName)
           : DisplayOption(localeName);
     } else {
+      // gsw, fil, and es_419 aren't in flutter_localized_countries' dataset
+      // so we handle them separately
       switch (localeCode) {
         case 'gsw':
           return DisplayOption('Schwiizertüütsch', subtitle: 'Swiss German');
@@ -253,7 +257,7 @@ class _SettingsPageState extends State<SettingsPage> {
     ];
 
     return Material(
-      color: colorScheme.secondaryVariant,
+      color: colorScheme.secondaryContainer,
       child: Padding(
         padding: isDesktop
             ? EdgeInsets.zero
@@ -325,7 +329,7 @@ class SettingsFeedback extends StatelessWidget {
       title: GalleryLocalizations.of(context)!.settingsFeedback,
       icon: Icons.feedback,
       onTap: () async {
-        const url = 'https://github.com/flutter/flutter/issues/new/choose/';
+        const url = 'https://github.com/flutter/gallery/issues/new/choose/';
         if (await canLaunch(url)) {
           await launch(
             url,
@@ -421,14 +425,10 @@ class _AnimateSettingsListItems extends StatelessWidget {
     Key? key,
     required this.animation,
     required this.children,
-    this.topPadding,
-    this.bottomPadding,
   }) : super(key: key);
 
   final Animation<double> animation;
   final List<Widget> children;
-  final double? topPadding;
-  final double? bottomPadding;
 
   @override
   Widget build(BuildContext context) {

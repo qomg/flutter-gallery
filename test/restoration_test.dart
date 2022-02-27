@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gallery/app.dart';
@@ -182,6 +184,7 @@ void main() {
     variant: const TargetPlatformVariant(
       <TargetPlatform>{TargetPlatform.android},
     ),
-    skip: true, // TODO: Investigate why Inbox tap is failing. In App it works.
+    skip: true,
+    // TODO(x): State restoration test is failing at Inbox tap is failing, but works in App, https://github.com/flutter/gallery/issues/570.
   );
 }

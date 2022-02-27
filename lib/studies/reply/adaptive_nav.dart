@@ -1,3 +1,5 @@
+
+
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
@@ -141,7 +143,6 @@ class _DesktopNav extends StatefulWidget {
   const _DesktopNav({
     Key? key,
     required this.inboxKey,
-    this.currentInbox,
     required this.extended,
     required this.destinations,
     required this.folders,
@@ -150,7 +151,6 @@ class _DesktopNav extends StatefulWidget {
 
   final bool extended;
   final UniqueKey inboxKey;
-  final String? currentInbox;
   final List<_Destination> destinations;
   final Map<String, String> folders;
   final void Function(int, MailboxPageType) onItemTapped;
@@ -1210,9 +1210,7 @@ class _ReplyFabState extends State<_ReplyFab>
                   ),
           );
         } else {
-          // TODO(shihaohong): State restoration of compose page on mobile is
-          // blocked because OpenContainer does not support restorablePush.
-          // See https://github.com/flutter/flutter/issues/69924.
+          // TODO(x): State restoration of compose page on mobile is blocked because OpenContainer does not support restorablePush, https://github.com/flutter/gallery/issues/570.
           return OpenContainer(
             openBuilder: (context, closedContainer) {
               return const ComposePage();

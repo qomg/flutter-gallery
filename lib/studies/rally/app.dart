@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,6 +62,7 @@ class RallyApp extends StatelessWidget {
     return ThemeData(
       appBarTheme: const AppBarTheme(
         systemOverlayStyle: SystemUiOverlayStyle.light,
+        backgroundColor: RallyColors.primaryBackground,
         elevation: 0,
       ),
       scaffoldBackgroundColor: RallyColors.primaryBackground,

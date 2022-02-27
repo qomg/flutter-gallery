@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gallery/layout/letter_spacing.dart';
@@ -91,9 +93,9 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
 
 const ColorScheme _shrineColorScheme = ColorScheme(
   primary: shrinePink100,
-  primaryVariant: shrineBrown900,
+  primaryContainer: shrineBrown900,
   secondary: shrinePink50,
-  secondaryVariant: shrineBrown900,
+  secondaryContainer: shrineBrown900,
   surface: shrineSurfaceWhite,
   background: shrineBackgroundWhite,
   error: shrineErrorRed,

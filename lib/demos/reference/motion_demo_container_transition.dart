@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
@@ -507,13 +509,11 @@ class _DetailsListTile extends StatelessWidget {
 class _InkWellOverlay extends StatelessWidget {
   const _InkWellOverlay({
     this.openContainer,
-    this.width,
     this.height,
     this.child,
   });
 
   final VoidCallback? openContainer;
-  final double? width;
   final double? height;
   final Widget? child;
 
@@ -521,7 +521,6 @@ class _InkWellOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
-      width: width,
       child: InkWell(
         onTap: openContainer,
         child: child,
