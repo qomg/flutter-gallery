@@ -203,6 +203,7 @@ flutter:
     - packages/flutter_gallery_assets/reply/icons/twotone_star.png
     - packages/flutter_gallery_assets/reply/icons/twotone_stars.png
     - packages/flutter_gallery_assets/reply/reply_logo.png
+    - packages/flutter_gallery_assets/crane/logo/outline_logo.png
     - packages/flutter_gallery_assets/places/india_chennai_flower_market.png
     - packages/flutter_gallery_assets/places/india_thanjavur_market.png
     - packages/flutter_gallery_assets/places/india_tanjore_bronze_works.png

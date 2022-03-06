@@ -164,6 +164,14 @@ class HomePage extends StatelessWidget {
           ),
           demos: otherDemos(localizations),
         ),
+        _DesktopCategoryItem(
+          category: GalleryDemoCategory.study,
+          asset: const AssetImage(
+            'assets/icons/reference/reference.png',
+            package: 'flutter_gallery_assets',
+          ),
+          demos: otherDemos(localizations),
+        ),
       ];
 
       return Scaffold(
@@ -1116,7 +1124,7 @@ class _CarouselCard extends StatelessWidget {
 
 double _carouselHeight(double scaleFactor, BuildContext context) => math.max(
     _carouselHeightMin *
-        GalleryOptions.of(context)!.textScaleFactor(context)! *
+        GalleryOptions.of(context)!.textScaleFactor(context) *
         scaleFactor,
     _carouselHeightMin);
 

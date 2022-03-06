@@ -311,12 +311,12 @@ class CategoryDemoItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        demo.title!,
+                        demo.title,
                         style: textTheme.subtitle1!
                             .apply(color: colorScheme.onSurface),
                       ),
                       Text(
-                        demo.subtitle!,
+                        demo.subtitle,
                         style: textTheme.overline!.apply(
                           color: colorScheme.onSurface.withOpacity(0.5),
                         ),

@@ -363,7 +363,7 @@ class _GalleryDemoPageState extends State<GalleryDemoPage>
         break;
       case _DemoState.code:
         final codeTheme = GoogleFonts.robotoMono(
-          fontSize: 12 * GalleryOptions.of(context)!.textScaleFactor(context)!,
+          fontSize: 12 * GalleryOptions.of(context)!.textScaleFactor(context),
         );
         section = CodeStyle(
           baseStyle: codeTheme.copyWith(color: const Color(0xFFFAFBFB)),

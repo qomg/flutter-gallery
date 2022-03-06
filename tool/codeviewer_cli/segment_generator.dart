@@ -85,6 +85,8 @@ Map<String, String> _createSegments(String sourceDirectoryPath) {
   var appearedSubsegments = <String>{};
 
   for (final file in files) {
+    var isHidden = file.path.split('/').last.startsWith('.');
+    if (isHidden) continue;
     // Process file.
 
     final content = file.readAsStringSync();
@@ -233,7 +235,7 @@ void _combineSegments(Map<String, String> segments, StringBuffer output) {
     final code = segments[name]!;
 
     output.writeln('  static TextSpan $name (BuildContext context) {');
-    output.writeln('    final codeStyle = CodeStyle.of(context);');
+    output.writeln('    final codeStyle = CodeStyle.of(context)!;');
     output.writeln('    return TextSpan(children: [');
 
     final codeSpans = DartSyntaxPrehighlighter().format(code);

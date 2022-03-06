@@ -123,7 +123,7 @@ class _DismissibleContainer extends StatelessWidget {
     required this.iconColor,
     required this.alignment,
     required this.padding,
-  })  : assert(backgroundColor != null);
+  });
 
   final String icon;
   final Color backgroundColor;

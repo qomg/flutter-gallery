@@ -2,9 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
-
 import 'dart:collection';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
@@ -13,8 +12,8 @@ import 'package:flutter_gen/gen_l10n/gallery_localizations_en.dart'
 import 'package:gallery/codeviewer/code_displayer.dart';
 import 'package:gallery/codeviewer/code_segments.dart';
 import 'package:gallery/data/icons.dart';
-
 import 'package:gallery/deferred_widget.dart';
+import 'package:gallery/demos/codelabs/demo.dart' deferred as codelabs;
 import 'package:gallery/demos/cupertino/cupertino_demos.dart'
     deferred as cupertino_demos;
 import 'package:gallery/demos/cupertino/demo_types.dart';
@@ -1349,6 +1348,82 @@ List<GalleryDemo> otherDemos(GalleryLocalizations localizations) {
               // ignore: prefer_const_constructors
               () => transformations_demo.TransformationsDemo()),
           code: CodeSegments.transformationsDemo,
+        ),
+      ],
+      category: GalleryDemoCategory.other,
+    ),
+    GalleryDemo(
+      title: 'codelabs',
+      icon: GalleryIcons.shrine,
+      slug: 'codelabs_layout',
+      subtitle: '布局示例',
+      configurations: [
+        GalleryDemoConfiguration(
+          title: 'codelabs',
+          description: '布局示例',
+          documentationUrl: '',
+          buildRoute: (_) => DeferredWidget(
+              codelabs.loadLibrary,
+              // ignore: prefer_const_constructors
+              () => codelabs.LayoutDemo()),
+          code: CodeSegments.codelabsLayoutDemo,
+        ),
+      ],
+      category: GalleryDemoCategory.other,
+    ),
+    GalleryDemo(
+      title: 'codelabs',
+      icon: GalleryIcons.cards,
+      slug: 'codelabs_widget',
+      subtitle: '组件示例',
+      configurations: [
+        GalleryDemoConfiguration(
+          title: 'codelabs',
+          description: '组件示例',
+          documentationUrl: '',
+          buildRoute: (_) => DeferredWidget(
+              codelabs.loadLibrary,
+              // ignore: prefer_const_constructors
+              () => codelabs.WidgetDemo()),
+          code: CodeSegments.codelabsWidgetDemo,
+        ),
+      ],
+      category: GalleryDemoCategory.other,
+    ),
+    GalleryDemo(
+      title: 'codelabs',
+      icon: GalleryIcons.dialogs,
+      slug: 'codelabs_dialog',
+      subtitle: '弹窗示例',
+      configurations: [
+        GalleryDemoConfiguration(
+          title: 'codelabs',
+          description: '弹窗示例',
+          documentationUrl: '',
+          buildRoute: (_) => DeferredWidget(
+              codelabs.loadLibrary,
+              // ignore: prefer_const_constructors
+              () => codelabs.DialogDemo()),
+          code: CodeSegments.codelabsDialogDemo,
+        ),
+      ],
+      category: GalleryDemoCategory.other,
+    ),
+    GalleryDemo(
+      title: 'codelabs',
+      icon: GalleryIcons.listAlt,
+      slug: 'codelabs',
+      subtitle: '滚动列表示例',
+      configurations: [
+        GalleryDemoConfiguration(
+          title: 'codelabs',
+          description: '滚动列表示例',
+          documentationUrl: '',
+          buildRoute: (_) => DeferredWidget(
+              codelabs.loadLibrary,
+              // ignore: prefer_const_constructors
+              () => codelabs.ScrollListDemo()),
+          code: CodeSegments.codelabsScrollListDemo,
         ),
       ],
       category: GalleryDemoCategory.other,

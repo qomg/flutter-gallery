@@ -151,7 +151,7 @@ class _SettingsPageState extends State<SettingsPage> {
         selectedOption: options.textScaleFactor(
           context,
           useSentinel: true,
-        )!,
+        ),
         optionsMap: LinkedHashMap.of({
           systemTextScaleFactorOption: DisplayOption(
             GalleryLocalizations.of(context)!.settingsSystemDefault,

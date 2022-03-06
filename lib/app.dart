@@ -32,7 +32,7 @@ class GalleryApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         textScaleFactor: systemTextScaleFactorOption,
         customTextDirection: CustomTextDirection.localeBased,
-        locale: null,
+        locale: const Locale('zh', 'CN'),
         timeDilation: timeDilation,
         platform: defaultTargetPlatform,
         isTestMode: isTestMode,

@@ -353,7 +353,7 @@ class CodeSpan {
   @override
   String toString() {
     return 'TextSpan('
-        'style: codeStyle.${_styleNameOf(type)}, '
+        'style: codeStyle.${_styleNameOf(type)}!, '
         "text: '${_escape(text)}'"
         ')';
   }

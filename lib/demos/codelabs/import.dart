@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 // 项目自身文件
 import 'package:gallery/app.dart';
-import '../app.dart';
 
 // 指定引用
 import 'dart:async' show Stream;

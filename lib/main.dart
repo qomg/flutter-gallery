@@ -16,29 +16,28 @@ enum Mode {
   compat,
 }
 
-const mode = Mode.ume;
+const mode = Mode.normal;
 
 void main() {
-  startUp();
-
-  switch (mode) {
-    case Mode.normal:
-      runApp(const GalleryApp());
-      break;
-    case Mode.ume:
-      runApp(wrapUME(const GalleryApp()));
-      break;
-    case Mode.dokit:
-      DoKit.runApp(
-        app: DoKitApp(const GalleryApp()),
-      );
-      break;
-    case Mode.compat:
-      DoKit.runApp(
-        app: DoKitApp(wrapUME(const GalleryApp())),
-      );
-      break;
-    default:
-  }
+  startUp(() {
+    switch (mode) {
+      case Mode.normal:
+        runApp(const GalleryApp());
+        break;
+      case Mode.ume:
+        runApp(wrapUME(const GalleryApp()));
+        break;
+      case Mode.dokit:
+        DoKit.runApp(
+          app: DoKitApp(const GalleryApp()),
+        );
+        break;
+      case Mode.compat:
+        DoKit.runApp(
+          app: DoKitApp(wrapUME(const GalleryApp())),
+        );
+        break;
+      default:
+    }
+  });
 }
-
